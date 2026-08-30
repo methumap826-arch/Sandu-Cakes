@@ -1,0 +1,17 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/cakes"
+public_folder: "/images/cakes"
+
+collections:
+  - name: "cakes"
+    label: "Cakes"
+    folder: "content/cakes"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Price", name: "price", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Cake Image", name: "image", widget: "image"}
