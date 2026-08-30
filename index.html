@@ -8,6 +8,9 @@
 <!-- PayPal SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id=AZpgfnIo4iuoJFhonfP1wsaN3s5NY8C9lBwXmtA6NtmiSvjnmXZrMPf_iWEQEu4cL7Krb-I5LcV5d4gu&currency=USD"></script>
 
+<!-- Netlify Identity Widget -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
 
@@ -354,7 +357,7 @@
 
   footer { text-align: center; padding: 36px 16px; opacity: 0.8; font-size: 13px; font-weight: 500; }
 
-  /* Mobile Optimizations (Cake Image Position Fixed) */
+  /* Mobile Optimizations */
   @media (max-width: 768px) {
     nav { top: 8px; width: calc(100% - 24px); padding: 8px 14px; }
     .nav-links { display: none; }
@@ -365,9 +368,9 @@
       flex-direction: column;
       justify-content: flex-start;
       padding-top: 120px;
-      padding-bottom: 310px; /* Space for the cake image at bottom */
+      padding-bottom: 310px;
       background-size: 260px auto;
-      background-position: center bottom 15px; /* Cake image moved lower */
+      background-position: center bottom 15px;
       text-align: center;
     }
     
@@ -400,7 +403,7 @@
     </ul>
     <div class="nav-socials">
       <a class="icon-btn" href="https://instagram.com" target="_blank"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3.25a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg></a>
-      <a class="icon-btn" href="https://facebook.com" target="_blank"><svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z"/></svg></a>
+      <a class="icon-btn" href="https://www.facebook.com/share/19KPaj5D9s/" target="_blank"><svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z"/></svg></a>
     </div>
   </nav>
 
@@ -417,111 +420,14 @@
     </div>
   </header>
 
-  <!-- Menu Section -->
+  <!-- Dynamic Menu Section -->
   <section id="menu" class="menu-section">
     <h2 class="section-title">Signature Menu</h2>
-    <p class="section-sub">10 Handcrafted Daily Favorites - Rs. 100 Each</p>
+    <p class="section-sub">Handcrafted Daily Favorites</p>
 
-    <div class="cake-grid">
-      <article class="cake-card">
-        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=800&q=80" alt="Vanilla Sponge Cake"></div>
-        <div class="cake-meta">
-          <div class="cake-label">Classic</div>
-          <h3>Vanilla Sponge Cake</h3>
-          <p>Soft and fluffy vanilla sponge layered with light buttercream icing.</p>
-          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
-        </div>
-      </article>
-
-      <article class="cake-card">
-        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Chocolate Fudge Cake"></div>
-        <div class="cake-meta">
-          <div class="cake-label">Best Seller</div>
-          <h3>Chocolate Fudge Cake</h3>
-          <p>Rich cocoa cake layered with thick dark chocolate fudge icing.</p>
-          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
-        </div>
-      </article>
-
-      <article class="cake-card">
-        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80" alt="Chocolate Gateau Cake"></div>
-        <div class="cake-meta">
-          <div class="cake-label">Special</div>
-          <h3>Chocolate Gateau Cake</h3>
-          <p>Moist gateau layers topped with fresh cream and dark chocolate curls.</p>
-          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
-        </div>
-      </article>
-
-      <article class="cake-card">
-        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=800&q=80" alt="Cupcakes"></div>
-        <div class="cake-meta">
-          <div class="cake-label">Popular</div>
-          <h3>Assorted Cupcakes</h3>
-          <p>Freshly baked vanilla & chocolate cupcakes with creamy topping.</p>
-          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
-        </div>
-      </article>
-
-      <article class="cake-card">
-        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=800&q=80" alt="Coffee Cake"></div>
-        <div class="cake-meta">
-          <div class="cake-label">Aromatic</div>
-          <h3>Coffee Gateau Cake</h3>
-          <p>Rich espresso-infused sponge topped with silky mocha icing.</p>
-          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
-        </div>
-      </article>
-
-      <article class="cake-card">
-        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80" alt="Mix Fruit Cake"></div>
-        <div class="cake-meta">
-          <div class="cake-label">Traditional</div>
-          <h3>Mix Fruit Cake</h3>
-          <p>Traditional baked fruit sponge loaded with dried fruits and nuts.</p>
-          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
-        </div>
-      </article>
-
-      <article class="cake-card">
-        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=800&q=80" alt="Ribbon Cake"></div>
-        <div class="cake-meta">
-          <div class="cake-label">Celebration</div>
-          <h3>Colorful Ribbon Cake</h3>
-          <p>Multi-colored sponge layers frosted with smooth vanilla cream.</p>
-          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
-        </div>
-      </article>
-
-      <article class="cake-card">
-        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=800&q=80" alt="Butter Cake"></div>
-        <div class="cake-meta">
-          <div class="cake-label">Homestyle</div>
-          <h3>Classic Butter Cake</h3>
-          <p>Traditional rich and buttery sponge baked to soft perfection.</p>
-          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
-        </div>
-      </article>
-
-      <article class="cake-card">
-        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?auto=format&fit=crop&w=800&q=80" alt="Red Velvet Cake"></div>
-        <div class="cake-meta">
-          <div class="cake-label">Premium</div>
-          <h3>Red Velvet Cake</h3>
-          <p>Smooth cocoa velvet sponge layered with cream cheese frosting.</p>
-          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
-        </div>
-      </article>
-
-      <article class="cake-card">
-        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=800&q=80" alt="Nutella Cake"></div>
-        <div class="cake-meta">
-          <div class="cake-label">Delight</div>
-          <h3>Nutella Cream Cake</h3>
-          <p>Moist chocolate sponge layered with hazelnut Nutella spread.</p>
-          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
-        </div>
-      </article>
+    <div class="cake-grid" id="cake-container">
+      <!-- Admin එකෙන් Add කරන Cakes මෙතැනට Load වේ -->
+      <p style="text-align:center; grid-column: 1/-1; font-weight:600;">Loading fresh cakes...</p>
     </div>
   </section>
 
@@ -543,18 +449,10 @@
         </div>
 
         <div class="form-group">
-          <label>Select Cake (All Rs. 100)</label>
+          <label>Select Cake</label>
           <select id="cakeSelect" name="Selected Cake" class="form-control" required>
-            <option value="Vanilla Sponge Cake">Vanilla Sponge Cake - Rs. 100</option>
-            <option value="Chocolate Fudge Cake">Chocolate Fudge Cake - Rs. 100</option>
-            <option value="Chocolate Gateau Cake">Chocolate Gateau Cake - Rs. 100</option>
-            <option value="Assorted Cupcakes Box">Assorted Cupcakes Box - Rs. 100</option>
-            <option value="Coffee Gateau Cake">Coffee Gateau Cake - Rs. 100</option>
-            <option value="Mix Fruit Cake">Mix Fruit Cake - Rs. 100</option>
-            <option value="Colorful Ribbon Cake">Colorful Ribbon Cake - Rs. 100</option>
-            <option value="Classic Butter Cake">Classic Butter Cake - Rs. 100</option>
-            <option value="Red Velvet Cake">Red Velvet Cake - Rs. 100</option>
-            <option value="Nutella Cream Cake">Nutella Cream Cake - Rs. 100</option>
+            <!-- Cakes auto populate into options -->
+            <option value="">Select a cake from menu</option>
           </select>
         </div>
 
@@ -579,12 +477,12 @@
         </div>
 
         <div id="details-cod" class="payment-details-box show">
-          <p style="font-size:13px; opacity:0.9;">✅ You will pay <strong>Rs. 100</strong> cash upon receiving your cake.</p>
+          <p style="font-size:13px; opacity:0.9;">✅ You will pay cash upon receiving your cake.</p>
           <button type="submit" class="btn-submit">Confirm Cash Order</button>
         </div>
 
         <div id="details-paypal" class="payment-details-box">
-          <p style="font-size:13px; margin-bottom: 12px;">💳 Pay <strong>Rs. 100 (~$0.33)</strong> securely online:</p>
+          <p style="font-size:13px; margin-bottom: 12px;">💳 Pay securely online via PayPal or Card:</p>
           <div id="paypal-button-container"></div>
         </div>
       </form>
@@ -600,7 +498,7 @@
         <h3>Instagram</h3>
         <p>@sandu_cake</p>
       </a>
-      <a class="social-card" href="https://facebook.com" target="_blank">
+      <a class="social-card" href="https://www.facebook.com/share/19KPaj5D9s/" target="_blank">
         <h3>Facebook</h3>
         <p>Sandu Cake Official</p>
       </a>
@@ -624,6 +522,63 @@
   <footer>© 2026 • Sandu Cake • Sweet Moments Delivered.</footer>
 
   <script>
+    // Netlify CMS Cakes Dynamic Loader
+    async function fetchCakes() {
+      const container = document.getElementById('cake-container');
+      const cakeSelect = document.getElementById('cakeSelect');
+
+      try {
+        const response = await fetch('/content/cakes/index.json');
+        if (!response.ok) throw new Error('Data not found');
+        const data = await response.json();
+        const cakes = data.cakes || [];
+
+        if(cakes.length === 0) {
+          container.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">No cakes added yet. Please add cakes via Admin Panel (/admin).</p>';
+          return;
+        }
+
+        container.innerHTML = '';
+        cakeSelect.innerHTML = '<option value="">Select a cake from menu</option>';
+
+        cakes.forEach(cake => {
+          // Render Cake Cards
+          container.innerHTML += `
+            <article class="cake-card">
+              <div class="cake-img-wrapper"><img src="${cake.image}" alt="${cake.title}"></div>
+              <div class="cake-meta">
+                <div class="cake-label">Freshly Baked</div>
+                <h3>${cake.title}</h3>
+                <p>${cake.description || ''}</p>
+                <div class="cake-action">
+                  <span class="cake-price">Rs. ${cake.price}</span>
+                  <a href="#order" class="btn btn-secondary" onclick="selectCakeForOrder('${cake.title}')">Order</a>
+                </div>
+              </div>
+            </article>
+          `;
+
+          // Fill Order Form Dropdown
+          cakeSelect.innerHTML += `<option value="${cake.title} - Rs. ${cake.price}">${cake.title} - Rs. ${cake.price}</option>`;
+        });
+
+      } catch (err) {
+        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">No cakes currently listed. Add cakes via Admin Panel.</p>';
+      }
+    }
+
+    function selectCakeForOrder(cakeTitle) {
+      const select = document.getElementById('cakeSelect');
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].text.includes(cakeTitle)) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+    }
+
+    fetchCakes();
+
     function togglePayment(type) {
       document.querySelectorAll('.payment-option-card').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.payment-details-box').forEach(b => b.classList.remove('show'));
@@ -680,6 +635,14 @@
       e.preventDefault();
       sendOrderToFormspree('Cash on Delivery');
     });
+
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+        }
+      });
+    }
   </script>
 </body>
 </html>
