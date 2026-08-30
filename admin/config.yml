@@ -8,10 +8,13 @@ public_folder: "/images/cakes"
 collections:
   - name: "cakes"
     label: "Cakes"
-    folder: "content/cakes"
-    create: true
+    file: "content/cakes/index.json"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Price", name: "price", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Cake Image", name: "image", widget: "image"}
+      - label: "Cake List"
+        name: "cakes"
+        widget: "list"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Price", name: "price", widget: "string"}
+          - {label: "Description", name: "description", widget: "text", required: false}
+          - {label: "Cake Image", name: "image", widget: "image"}
