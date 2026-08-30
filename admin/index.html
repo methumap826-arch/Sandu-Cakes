@@ -4,157 +4,85 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sandu Cake Admin Panel</title>
-  
-  <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  
-  <!-- Custom Glassy Pink Theme Styles for Decap CMS -->
-  <style>
-    /* Main Background Dynamic Pink Gradient */
-    body {
-      background: linear-gradient(135deg, #fff5f8 0%, #fbcfe8 45%, #f472b6 80%, #db2777 100%) !important;
-      background-attachment: fixed !important;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-      color: #3b0764 !important;
-    }
-
-    /* Top Navigation Header Bar */
-    header[class*="AppHeader"] {
-      background: rgba(255, 255, 255, 0.3) !important;
-      backdrop-filter: blur(16px) !important;
-      -webkit-backdrop-filter: blur(16px) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
-      box-shadow: 0 4px 20px rgba(219, 39, 119, 0.1) !important;
-    }
-
-    /* Main Container & Layout */
-    div[class*="AppMainContainer"] {
-      background: transparent !important;
-    }
-
-    /* Left Sidebar & Navigation Panels */
-    div[class*="SidebarContainer"],
-    div[class*="CollectionTop"] {
-      background: rgba(255, 255, 255, 0.25) !important;
-      backdrop-filter: blur(16px) !important;
-      -webkit-backdrop-filter: blur(16px) !important;
-      border: 1px solid rgba(255, 255, 255, 0.4) !important;
-      border-radius: 20px !important;
-      box-shadow: 0 8px 32px 0 rgba(219, 39, 119, 0.1) !important;
-      margin: 12px !important;
-    }
-
-    /* Form Card Container (Left Side Inputs) */
-    div[class*="EditorControlPane"] {
-      background: rgba(255, 255, 255, 0.25) !important;
-      backdrop-filter: blur(16px) !important;
-      -webkit-backdrop-filter: blur(16px) !important;
-      border: 1px solid rgba(255, 255, 255, 0.4) !important;
-      border-radius: 20px !important;
-      box-shadow: 0 8px 32px 0 rgba(219, 39, 119, 0.12) !important;
-      margin: 12px !important;
-      padding: 20px !important;
-    }
-
-    /* Form Label Styling */
-    label[class*="ControlLabel"] {
-      color: #be185d !important;
-      font-weight: 700 !important;
-      font-size: 13px !important;
-      text-transform: uppercase !important;
-      letter-spacing: 0.5px !important;
-    }
-
-    /* Input Fields, Textareas & Select Boxes */
-    input[type="text"], 
-    textarea, 
-    select {
-      background: rgba(255, 255, 255, 0.5) !important;
-      backdrop-filter: blur(8px) !important;
-      border: 1px solid rgba(255, 255, 255, 0.6) !important;
-      border-radius: 12px !important;
-      color: #3b0764 !important;
-      font-weight: 500 !important;
-      padding: 10px 14px !important;
-    }
-
-    input[type="text"]:focus, 
-    textarea:focus, 
-    select:focus {
-      background: rgba(255, 255, 255, 0.85) !important;
-      border-color: #db2777 !important;
-      box-shadow: 0 0 12px rgba(219, 39, 119, 0.3) !important;
-      outline: none !important;
-    }
-
-    /* Buttons Styling (Publish, Add, Save Buttons) */
-    button[class*="Button"], 
-    a[class*="Button"] {
-      border-radius: 50px !important;
-      font-weight: 700 !important;
-      transition: all 0.2s ease !important;
-    }
-
-    /* Primary Buttons (Publish, Add Cake) */
-    button[class*="button-green"], 
-    button[class*="button-blue"],
-    a[class*="button-green"] {
-      background: linear-gradient(135deg, #be185d, #db2777) !important;
-      border: none !important;
-      color: #ffffff !important;
-      box-shadow: 0 4px 14px rgba(219, 39, 119, 0.35) !important;
-    }
-
-    button[class*="button-green"]:hover, 
-    button[class*="button-blue"]:hover {
-      transform: translateY(-1px) !important;
-      box-shadow: 0 6px 18px rgba(219, 39, 119, 0.5) !important;
-    }
-
-    /* Right Side Live Preview Container */
-    div[class*="PreviewPaneContainer"] {
-      background: rgba(255, 255, 255, 0.2) !important;
-      backdrop-filter: blur(16px) !important;
-      -webkit-backdrop-filter: blur(16px) !important;
-      border: 1px solid rgba(255, 255, 255, 0.4) !important;
-      border-radius: 20px !important;
-      margin: 12px !important;
-      overflow: hidden !important;
-    }
-
-    /* Card Item Lists */
-    div[class*="ListControl"] {
-      background: rgba(255, 255, 255, 0.3) !important;
-      border-radius: 14px !important;
-      border: 1px solid rgba(255, 255, 255, 0.5) !important;
-    }
-  </style>
 </head>
-<body>
-  <!-- Decap CMS Core Script -->
+<body style="background: linear-gradient(135deg, #fff5f8 0%, #fbcfe8 45%, #f472b6 80%, #db2777 100%); min-height: 100vh;">
+
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
-  <!-- Register Custom Glassy Preview Styles -->
   <script>
+    // Inject Custom Glassy Pink CSS into Netlify CMS Editor
+    const customCSS = `
+      body, #nc-root {
+        background: linear-gradient(135deg, #fff5f8 0%, #fbcfe8 45%, #f472b6 80%, #db2777 100%) !important;
+        background-attachment: fixed !important;
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      header {
+        background: rgba(255, 255, 255, 0.35) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+      }
+
+      div[class*="AppMainContainer"], main {
+        background: transparent !important;
+      }
+
+      div[class*="EditorControlPane"], 
+      div[class*="SidebarContainer"], 
+      div[class*="CollectionTop"],
+      div[class*="ControlContainer"] {
+        background: rgba(255, 255, 255, 0.3) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.5) !important;
+        border-radius: 18px !important;
+        box-shadow: 0 8px 32px 0 rgba(219, 39, 119, 0.15) !important;
+        margin: 10px !important;
+      }
+
+      input[type="text"], textarea, select {
+        background: rgba(255, 255, 255, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.8) !important;
+        border-radius: 12px !important;
+        color: #3b0764 !important;
+      }
+
+      input[type="text"]:focus, textarea:focus {
+        background: rgba(255, 255, 255, 0.95) !important;
+        border-color: #db2777 !important;
+        box-shadow: 0 0 10px rgba(219, 39, 119, 0.3) !important;
+      }
+
+      label {
+        color: #be185d !important;
+        font-weight: 700 !important;
+      }
+
+      button, a[class*="Button"] {
+        border-radius: 50px !important;
+      }
+    `;
+
+    // Inject styles dynamically
+    const styleEl = document.createElement('style');
+    styleEl.innerHTML = customCSS;
+    document.head.appendChild(styleEl);
+
+    // Register Live Preview Glassy Style
     CMS.registerPreviewStyle(`
       body {
         background: linear-gradient(135deg, #fff5f8 0%, #fbcfe8 100%) !important;
-        font-family: 'Inter', sans-serif !important;
-        padding: 24px !important;
+        padding: 20px !important;
         color: #3b0764 !important;
-      }
-      h1, h2, h3 {
-        color: #be185d !important;
         font-family: sans-serif !important;
-      }
-      p {
-        color: #4c1d95 !important;
-        font-size: 15px !important;
       }
       img {
         max-width: 100% !important;
         border-radius: 16px !important;
-        box-shadow: 0 8px 24px rgba(219, 39, 119, 0.2) !important;
+        box-shadow: 0 8px 20px rgba(219, 39, 119, 0.2) !important;
       }
     `);
   </script>
