@@ -4,154 +4,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sandu Cake - Admin Panel</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-  <style>
-    /* Admin Dashboard Glassy Pink Theme */
-    html, body, #nc-root {
-      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%) !important;
-      background-attachment: fixed !important;
-      font-family: 'Poppins', sans-serif !important;
-    }
-  </style>
 </head>
 <body>
-
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
   <script>
-    // 1. Website එකේ Card එකේ Design එක preview iframe එකට ලබා දීම
-    CMS.registerPreviewStyle(`
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-      
-      body {
-        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%) !important;
-        background-attachment: fixed !important;
-        font-family: 'Poppins', sans-serif !important;
-        padding: 30px !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: flex-start !important;
-        min-height: 100vh !important;
-        margin: 0 !important;
-      }
-
-      .preview-container {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 25px !important;
-        justify-content: center !important;
-        width: 100% !important;
-      }
-
-      /* Website එකේ screenshot එකේ ඇති විදිහටම Glassy Card එක */
-      .website-glass-card {
-        background: rgba(255, 255, 255, 0.4) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-        border-radius: 30px !important;
-        border: 1px solid rgba(255, 255, 255, 0.8) !important;
-        box-shadow: 0 15px 35px rgba(216, 27, 96, 0.15) !important;
-        padding: 24px !important;
-        width: 260px !important;
-        box-sizing: border-box !important;
-        text-align: left !important;
-      }
-
-      .website-img-box {
-        width: 100% !important;
-        height: 190px !important;
-        border-radius: 20px !important;
-        overflow: hidden !important;
-        margin-bottom: 15px !important;
-        background: rgba(255, 255, 255, 0.5) !important;
-      }
-
-      .website-img-box img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-      }
-
-      .card-tag {
-        font-size: 11px !important;
-        font-weight: 700 !important;
-        color: #d81b60 !important;
-        letter-spacing: 1px !important;
-        text-transform: uppercase !important;
-        margin-bottom: 4px !important;
-      }
-
-      .card-title {
-        font-size: 20px !important;
-        font-weight: 700 !important;
-        color: #4a154b !important;
-        margin-bottom: 15px !important;
-      }
-
-      .card-footer {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-      }
-
-      .card-price {
-        font-size: 15px !important;
-        font-weight: 700 !important;
-        color: #d81b60 !important;
-      }
-
-      .card-order-btn {
-        background: rgba(255, 255, 255, 0.9) !important;
-        border: 1px solid rgba(255, 255, 255, 1) !important;
-        color: #4a154b !important;
-        font-weight: 600 !important;
-        padding: 8px 20px !important;
-        border-radius: 50px !important;
-        font-size: 14px !important;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
-      }
-    `);
-
-    // 2. Decap CMS Preview Component Registered properly
-    var CakesPreview = createClass({
+    var LivePreview = createClass({
       render: function() {
-        var entry = this.props.entry;
-        var cakes = entry.getIn(['data', 'cakes']);
-        var getAsset = this.props.getAsset;
-
-        if (!cakes || !cakes.size) {
-          return h('div', { style: { color: '#4a154b', fontWeight: '600', fontFamily: 'Poppins' } }, 'No cakes added yet.');
-        }
-
-        var cakeCards = cakes.map((cake, index) => {
-          var title = cake.get('title') || 'Vanila Cake';
-          var price = cake.get('price') || 'Rs. LKR 500';
-          var image = cake.get('image');
-          var imageUrl = image ? getAsset(image).toString() : '';
-
-          return h('div', { key: index, className: 'website-glass-card' },
-            imageUrl ? h('div', { className: 'website-img-box' },
-              h('img', { src: imageUrl, alt: title })
-            ) : null,
-            h('div', { className: 'card-tag' }, 'SPECIAL'),
-            h('div', { className: 'card-title' }, title),
-            h('div', { className: 'card-footer' },
-              h('div', { className: 'card-price' }, price),
-              h('button', { className: 'card-order-btn' }, 'Order')
-            )
-          );
+        return h('iframe', {
+          src: 'https://sanducakes.netlify.app/#order',
+          style: { width: '100%', height: '100vh', border: 'none' }
         });
-
-        return h('div', { className: 'preview-container' }, cakeCards.toArray());
       }
     });
 
-    // Collection Name එකට හරියටම Component එක Bind කිරීම
-    CMS.registerPreviewTemplate('cakes_menu', CakesPreview);
-    CMS.registerPreviewTemplate('cake_data', CakesPreview);
+    CMS.registerPreviewTemplate('cakes_list', LivePreview);
+    CMS.registerPreviewTemplate('cakes_menu', LivePreview);
+    CMS.registerPreviewTemplate('cake_data', LivePreview);
   </script>
 </body>
 </html>
