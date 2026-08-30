@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SANDU CAKE | Premium Bakery</title>
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=AZpgfnIo4iuoJFhonfP1wsaN3s5NY8C9lBwXmtA6NtmiSvjnmXZrMPf_iWEQEu4cL7Krb-I5LcV5d4gu&currency=USD"></script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --accent-light-pink: #f472b6;
+    --accent-pink-soft: #db2777;
+    --accent-pink-button: #be185d;
+    --text-color: #3b0764;
+    
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Modern Glassmorphism Styling */
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+    --glass-blur: blur(16px);
+    --glass-shadow: 0 8px 32px 0 rgba(219, 39, 119, 0.1);
+  }
+
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+  }
+
+  html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Multi-Color Gradient Background */
+  body {
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, #fff5f8 0%, #fbcfe8 45%, #f472b6 80%, #db2777 100%);
+    background-attachment: fixed;
+    color: var(--text-color);
+    line-height: 1.5;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Glassy Transparent Navigation Bar */
+  nav {
+    position: fixed;
+    top: 16px; left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 1200px;
+    z-index: 1000;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: 50px;
+    box-shadow: var(--glass-shadow);
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-profile-img {
+    width: 36px; height: 36px;
+    border-radius: 50%; object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+
+  .logo {
+    font-family: var(--font-heading);
+    font-size: 20px; font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--accent-pink-soft);
+  }
+
+  .nav-links { 
+    display: flex; gap: 24px; list-style: none; 
+  }
+
+  .nav-links a {
+    color: var(--text-color);
+    text-decoration: none; font-weight: 600; font-size: 14px;
+    transition: opacity 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 0.7; }
+
+  .nav-socials { display: flex; gap: 8px; }
+
+  .icon-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%; display: grid; place-items: center;
+    color: var(--accent-pink-soft); text-decoration: none;
+    background: rgba(255, 255, 255, 0.3);
+    border: var(--glass-border);
+    transition: background 0.2s;
+  }
+  .icon-btn:hover { background: rgba(255, 255, 255, 0.5); }
+  .icon-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* Hero Section */
+  .hero-cover {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 100px 6% 0;
+    background-color: transparent;
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/065/429/236/small_2x/delicious-pink-cake-with-cherry-toppings-and-creamy-swirls-on-a-golden-base-png.png');
+    background-repeat: no-repeat;
+    background-size: 48%;
+    background-position: right 4% center;
+  }
+
+  .hero-content { 
+    position: relative; 
+    z-index: 2; 
+    max-width: 520px; 
+  }
+
+  .badge {
+    display: inline-block; padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--accent-pink-soft); margin-bottom: 14px;
+    box-shadow: var(--glass-shadow);
+  }
+
+  .hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 52px; font-weight: 700; line-height: 1.1;
+    color: var(--accent-pink-soft); margin-bottom: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .hero-content p { font-size: 16px; opacity: 0.9; margin-bottom: 28px; font-weight: 500; }
+
+  .cta-group { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* Glassy Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 28px; border-radius: 50px;
+    font-weight: 700; font-size: 15px; text-decoration: none;
+    transition: all 0.25s ease; cursor: pointer; text-align: center;
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+    border: none;
+  }
+
+  .btn-primary { 
+    background: var(--accent-pink-soft); 
+    color: #ffffff; 
+    box-shadow: 0 6px 18px rgba(219, 39, 119, 0.3);
+  }
+  .btn-primary:hover {
+    background: var(--accent-pink-button);
+    transform: translateY(-2px);
+  }
+  
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    color: var(--text-color);
+  }
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Sections Layout */
+  .menu-section, .order-section, .socials {
+    padding: 80px 16px 40px; max-width: 1200px; margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 8px;
+    font-family: var(--font-heading); color: var(--accent-pink-soft);
+    letter-spacing: 0.5px;
+  }
+
+  .section-sub { text-align: center; opacity: 0.85; margin-bottom: 40px; font-size: 15px; font-weight: 500; }
+
+  /* Glass Cards */
+  .cake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+
+  .cake-card { 
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: 24px;
+    overflow: hidden; 
+    display: flex; flex-direction: column;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .cake-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 12px 40px 0 rgba(219, 39, 119, 0.2);
+  }
+
+  .cake-img-wrapper { position: relative; aspect-ratio: 4/3; width: 100%; overflow: hidden; }
+  .cake-img-wrapper img { 
+    width: 100%; height: 100%; object-fit: cover; 
+    transition: transform 0.4s ease;
+  }
+  .cake-card:hover .cake-img-wrapper img {
+    transform: scale(1.05);
+  }
+
+  .cake-meta { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+  .cake-label { 
+    font-family: var(--font-heading);
+    font-size: 12px; font-weight: 700; color: var(--accent-pink-soft); 
+    text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px;
+  }
+  .cake-meta h3 { font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .cake-meta p { font-size: 13px; opacity: 0.85; margin-bottom: 16px; flex: 1; font-weight: 400; }
+
+  .cake-action { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .cake-price { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--accent-pink-soft); }
+
+  /* Glass Form Container */
+  .form-card { 
+    padding: 32px 24px; border-radius: 28px; max-width: 650px; margin: 0 auto; 
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { 
+    display: block; margin-bottom: 8px; font-weight: 700; font-size: 14px; 
+    font-family: var(--font-heading); color: var(--accent-pink-soft); 
+    letter-spacing: 0.5px;
+  }
+
+  .form-control {
+    width: 100%; padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.5); border: var(--glass-border);
+    border-radius: 16px; color: var(--text-color); font-size: 14px; outline: none;
+    font-family: var(--font-body); font-weight: 500;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .form-control:focus {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 2px var(--accent-light-pink);
+  }
+
+  .payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+  .payment-option-card {
+    border-radius: 18px; padding: 14px;
+    cursor: pointer; background: rgba(255, 255, 255, 0.3);
+    border: var(--glass-border); text-align: center;
+    transition: all 0.2s ease;
+  }
+  .payment-option-card.active { 
+    background: rgba(255, 255, 255, 0.7); 
+    box-shadow: 0 4px 16px rgba(219, 39, 119, 0.15);
+  }
+  .payment-option-card input { display: none; }
+
+  .payment-details-box { margin-top: 14px; padding: 18px; border-radius: 18px; background: rgba(255, 255, 255, 0.4); border: var(--glass-border); display: none; }
+  .payment-details-box.show { display: block; }
+
+  .btn-submit {
+    width: 100%; padding: 16px; border-radius: 50px;
+    background: var(--accent-pink-soft);
+    color: #fff; font-size: 16px; font-weight: 700; border: none; cursor: pointer; margin-top: 16px;
+    box-shadow: 0 6px 18px rgba(219, 39, 119, 0.25);
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+  .btn-submit:hover { 
+    background: var(--accent-pink-button); 
+    transform: translateY(-2px);
+  }
+
+  /* Glass Social Cards */
+  .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto; }
+  .social-card { 
+    padding: 22px; text-align: center; text-decoration: none; color: inherit; 
+    border-radius: 20px; 
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease; 
+  }
+  .social-card:hover { 
+    transform: translateY(-4px); 
+    background: rgba(255, 255, 255, 0.5); 
+    box-shadow: 0 10px 25px rgba(219, 39, 119, 0.15);
+  }
+  .social-card h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--accent-pink-soft); }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(59, 7, 100, 0.3);
+    backdrop-filter: blur(12px); display: none; place-items: center; z-index: 2000; padding: 16px;
+  }
+  .modal-overlay.active { display: grid; }
+  
+  .modal-box {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    padding: 32px 24px; border-radius: 28px;
+    text-align: center; max-width: 380px; width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .success-icon {
+    width: 56px; height: 56px; background: #dcfce7; color: #16a34a;
+    border-radius: 50%; display: grid; place-items: center; margin: 0 auto 14px;
+    font-size: 28px; font-weight: bold;
+  }
+
+  footer { text-align: center; padding: 36px 16px; opacity: 0.8; font-size: 13px; font-weight: 500; }
+
+  /* Mobile Optimizations (Cake Image Position Fixed) */
+  @media (max-width: 768px) {
+    nav { top: 8px; width: calc(100% - 24px); padding: 8px 14px; }
+    .nav-links { display: none; }
+    
+    .hero-cover {
+      height: auto;
+      min-height: 100vh;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 120px;
+      padding-bottom: 310px; /* Space for the cake image at bottom */
+      background-size: 260px auto;
+      background-position: center bottom 15px; /* Cake image moved lower */
+      text-align: center;
+    }
+    
+    .hero-content h1 { font-size: 38px; }
+    .hero-content p { font-size: 15px; }
+
+    .cta-group { flex-direction: column; width: 100%; }
+    .cta-group .btn { width: 100%; }
+
+    .cake-action { flex-direction: column; align-items: stretch; }
+    .cake-action .btn { width: 100%; }
+
+    .payment-methods { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Floating Navigation -->
+  <nav>
+    <a href="#home" class="logo-container">
+      <img src="logo.jpg" alt="Logo" class="nav-profile-img" onerror="this.style.display='none'">
+      <span class="logo">SANDU CAKE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Our Menu</a></li>
+      <li><a href="#order">Place Order</a></li>
+      <li><a href="#social">Connect</a></li>
+    </ul>
+    <div class="nav-socials">
+      <a class="icon-btn" href="https://instagram.com" target="_blank"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3.25a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg></a>
+      <a class="icon-btn" href="https://facebook.com" target="_blank"><svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z"/></svg></a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero-cover">
+    <div class="hero-content">
+      <span class="badge">Artisan Bakery</span>
+      <h1>SANDU CAKE</h1>
+      <p>Handcrafted premium cakes baked fresh daily. Order online and pay using Cash or PayPal / Cards securely.</p>
+      <div class="cta-group">
+        <a href="#menu" class="btn btn-primary">Explore Menu</a>
+        <a href="#order" class="btn btn-secondary">Order & Pay</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Section -->
+  <section id="menu" class="menu-section">
+    <h2 class="section-title">Signature Menu</h2>
+    <p class="section-sub">10 Handcrafted Daily Favorites - Rs. 100 Each</p>
+
+    <div class="cake-grid">
+      <article class="cake-card">
+        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=800&q=80" alt="Vanilla Sponge Cake"></div>
+        <div class="cake-meta">
+          <div class="cake-label">Classic</div>
+          <h3>Vanilla Sponge Cake</h3>
+          <p>Soft and fluffy vanilla sponge layered with light buttercream icing.</p>
+          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
+        </div>
+      </article>
+
+      <article class="cake-card">
+        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Chocolate Fudge Cake"></div>
+        <div class="cake-meta">
+          <div class="cake-label">Best Seller</div>
+          <h3>Chocolate Fudge Cake</h3>
+          <p>Rich cocoa cake layered with thick dark chocolate fudge icing.</p>
+          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
+        </div>
+      </article>
+
+      <article class="cake-card">
+        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80" alt="Chocolate Gateau Cake"></div>
+        <div class="cake-meta">
+          <div class="cake-label">Special</div>
+          <h3>Chocolate Gateau Cake</h3>
+          <p>Moist gateau layers topped with fresh cream and dark chocolate curls.</p>
+          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
+        </div>
+      </article>
+
+      <article class="cake-card">
+        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=800&q=80" alt="Cupcakes"></div>
+        <div class="cake-meta">
+          <div class="cake-label">Popular</div>
+          <h3>Assorted Cupcakes</h3>
+          <p>Freshly baked vanilla & chocolate cupcakes with creamy topping.</p>
+          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
+        </div>
+      </article>
+
+      <article class="cake-card">
+        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=800&q=80" alt="Coffee Cake"></div>
+        <div class="cake-meta">
+          <div class="cake-label">Aromatic</div>
+          <h3>Coffee Gateau Cake</h3>
+          <p>Rich espresso-infused sponge topped with silky mocha icing.</p>
+          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
+        </div>
+      </article>
+
+      <article class="cake-card">
+        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80" alt="Mix Fruit Cake"></div>
+        <div class="cake-meta">
+          <div class="cake-label">Traditional</div>
+          <h3>Mix Fruit Cake</h3>
+          <p>Traditional baked fruit sponge loaded with dried fruits and nuts.</p>
+          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
+        </div>
+      </article>
+
+      <article class="cake-card">
+        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=800&q=80" alt="Ribbon Cake"></div>
+        <div class="cake-meta">
+          <div class="cake-label">Celebration</div>
+          <h3>Colorful Ribbon Cake</h3>
+          <p>Multi-colored sponge layers frosted with smooth vanilla cream.</p>
+          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
+        </div>
+      </article>
+
+      <article class="cake-card">
+        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=800&q=80" alt="Butter Cake"></div>
+        <div class="cake-meta">
+          <div class="cake-label">Homestyle</div>
+          <h3>Classic Butter Cake</h3>
+          <p>Traditional rich and buttery sponge baked to soft perfection.</p>
+          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
+        </div>
+      </article>
+
+      <article class="cake-card">
+        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?auto=format&fit=crop&w=800&q=80" alt="Red Velvet Cake"></div>
+        <div class="cake-meta">
+          <div class="cake-label">Premium</div>
+          <h3>Red Velvet Cake</h3>
+          <p>Smooth cocoa velvet sponge layered with cream cheese frosting.</p>
+          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
+        </div>
+      </article>
+
+      <article class="cake-card">
+        <div class="cake-img-wrapper"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=800&q=80" alt="Nutella Cake"></div>
+        <div class="cake-meta">
+          <div class="cake-label">Delight</div>
+          <h3>Nutella Cream Cake</h3>
+          <p>Moist chocolate sponge layered with hazelnut Nutella spread.</p>
+          <div class="cake-action"><span class="cake-price">Rs. 100</span><a href="#order" class="btn btn-secondary">Order</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Order & Payment Form -->
+  <section id="order" class="order-section">
+    <h2 class="section-title">Place Your Cake Order</h2>
+    <p class="section-sub">Choose Cash on Delivery or Pay Online via PayPal / Cards</p>
+
+    <div class="form-card">
+      <form id="cakeOrderForm">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="custName" name="Customer Name" class="form-control" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number (WhatsApp)</label>
+          <input type="tel" id="custPhone" name="Phone Number" class="form-control" placeholder="07X XXXXXXX" required>
+        </div>
+
+        <div class="form-group">
+          <label>Select Cake (All Rs. 100)</label>
+          <select id="cakeSelect" name="Selected Cake" class="form-control" required>
+            <option value="Vanilla Sponge Cake">Vanilla Sponge Cake - Rs. 100</option>
+            <option value="Chocolate Fudge Cake">Chocolate Fudge Cake - Rs. 100</option>
+            <option value="Chocolate Gateau Cake">Chocolate Gateau Cake - Rs. 100</option>
+            <option value="Assorted Cupcakes Box">Assorted Cupcakes Box - Rs. 100</option>
+            <option value="Coffee Gateau Cake">Coffee Gateau Cake - Rs. 100</option>
+            <option value="Mix Fruit Cake">Mix Fruit Cake - Rs. 100</option>
+            <option value="Colorful Ribbon Cake">Colorful Ribbon Cake - Rs. 100</option>
+            <option value="Classic Butter Cake">Classic Butter Cake - Rs. 100</option>
+            <option value="Red Velvet Cake">Red Velvet Cake - Rs. 100</option>
+            <option value="Nutella Cream Cake">Nutella Cream Cake - Rs. 100</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Delivery / Pickup Date</label>
+          <input type="date" id="delDate" name="Delivery Date" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Payment Method</label>
+          <div class="payment-methods">
+            <label class="payment-option-card active" id="card-cod">
+              <input type="radio" name="Payment Status" value="Cash on Delivery" checked onclick="togglePayment('cod')">
+              <strong>🚚 Cash on Delivery</strong>
+            </label>
+
+            <label class="payment-option-card" id="card-paypal">
+              <input type="radio" name="Payment Status" value="Paid Online via PayPal" onclick="togglePayment('paypal')">
+              <strong>💳 PayPal / Cards</strong>
+            </label>
+          </div>
+        </div>
+
+        <div id="details-cod" class="payment-details-box show">
+          <p style="font-size:13px; opacity:0.9;">✅ You will pay <strong>Rs. 100</strong> cash upon receiving your cake.</p>
+          <button type="submit" class="btn-submit">Confirm Cash Order</button>
+        </div>
+
+        <div id="details-paypal" class="payment-details-box">
+          <p style="font-size:13px; margin-bottom: 12px;">💳 Pay <strong>Rs. 100 (~$0.33)</strong> securely online:</p>
+          <div id="paypal-button-container"></div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Connect Section -->
+  <section id="social" class="socials">
+    <h2 class="section-title">Connect With Us</h2>
+    <p class="section-sub">Follow Sandu Cake on Social Media</p>
+    <div class="social-grid">
+      <a class="social-card" href="https://instagram.com" target="_blank">
+        <h3>Instagram</h3>
+        <p>@sandu_cake</p>
+      </a>
+      <a class="social-card" href="https://facebook.com" target="_blank">
+        <h3>Facebook</h3>
+        <p>Sandu Cake Official</p>
+      </a>
+      <a class="social-card" href="https://tiktok.com" target="_blank">
+        <h3>TikTok</h3>
+        <p>@sanducake</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Order Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-box">
+      <div class="success-icon">✓</div>
+      <h2 style="font-family: var(--font-heading); color: var(--accent-pink-soft); margin-bottom: 6px;">Order Complete!</h2>
+      <p style="font-size: 14px; opacity: 0.85; margin-bottom: 20px;">Thank you for ordering with Sandu Cake. We have received your order details!</p>
+      <button class="btn btn-primary" style="width: 100%;" onclick="closeModal()">OK</button>
+    </div>
+  </div>
+
+  <footer>© 2026 • Sandu Cake • Sweet Moments Delivered.</footer>
+
+  <script>
+    function togglePayment(type) {
+      document.querySelectorAll('.payment-option-card').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.payment-details-box').forEach(b => b.classList.remove('show'));
+
+      if(type === 'cod') {
+        document.getElementById('card-cod').classList.add('active');
+        document.getElementById('details-cod').classList.add('show');
+        document.querySelector('input[value="Cash on Delivery"]').checked = true;
+      } else {
+        document.getElementById('card-paypal').classList.add('active');
+        document.getElementById('details-paypal').classList.add('show');
+        document.querySelector('input[value="Paid Online via PayPal"]').checked = true;
+      }
+    }
+
+    function showModal() {
+      document.getElementById('successModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('successModal').classList.remove('active');
+      document.getElementById('cakeOrderForm').reset();
+      togglePayment('cod');
+    }
+
+    function sendOrderToFormspree(paymentStatus) {
+      const form = document.getElementById('cakeOrderForm');
+      const formData = new FormData(form);
+      formData.set('Payment Status', paymentStatus);
+
+      fetch('https://formspree.io/f/xjyvkvro', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(() => showModal())
+      .catch(() => showModal());
+    }
+
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{ amount: { value: '0.33' } }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function() {
+          sendOrderToFormspree('Paid Online via PayPal');
+        });
+      }
+    }).render('#paypal-button-container');
+
+    document.getElementById('cakeOrderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      sendOrderToFormspree('Cash on Delivery');
+    });
+  </script>
+</body>
+</html>
