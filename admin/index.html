@@ -3,35 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Glassy Look - Admin Panel</title>
+  <title>Sandu Cake - Admin Preview</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <style>
-    /* Admin Dashboard overall look */
+    /* Admin Panel එකේ ඉතිරි කොටස් ලස්සනට තියාගන්න */
     html, body, #nc-root {
       background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%) !important;
       background-attachment: fixed !important;
       font-family: 'Poppins', sans-serif !important;
     }
-
-    /* Right side preview container area */
     div[class*="PreviewPaneContainer"] {
-      background: rgba(255, 255, 255, 0.25) !important;
+      background: rgba(255, 255, 255, 0.2) !important;
       backdrop-filter: blur(20px) !important;
-      -webkit-backdrop-filter: blur(20px) !important;
-      border-left: 1px solid rgba(255, 255, 255, 0.5) !important;
     }
   </style>
 </head>
 <body>
 
-  <!-- Decap CMS Core Script -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
   <script>
-    // 1. Website එකේ තියෙන විදිහටම Glass Look එක Preview එක ඇතුළට Inject කිරීම
+    // 1. Website එකේ UI එකටම අදාළ CSS Styles (ඔයාගේ Website එකේ CSS file එකේ ඇති ආකාරයටම)
     CMS.registerPreviewStyle(`
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
       
@@ -39,130 +34,123 @@
         background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%) !important;
         background-attachment: fixed !important;
         font-family: 'Poppins', sans-serif !important;
-        padding: 40px !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: flex-start !important;
-        min-height: 100vh !important;
-        box-sizing: border-box !important;
         margin: 0 !important;
+        padding: 40px !important;
       }
 
-      .preview-list-wrapper {
+      /* Website එකේ screenshot එකේ පෙනෙන පරිදිම ඇති Glassy Card Design එක */
+      .cake-grid {
         display: flex !important;
         flex-wrap: wrap !important;
         gap: 30px !important;
-        justify-content: center !important;
-        width: 100% !important;
       }
 
-      /* Website එකේ තියෙන Glassy Card Design එකමයි */
-      .website-glass-card {
-        background: rgba(255, 255, 255, 0.35) !important;
+      .glass-card {
+        background: rgba(255, 255, 255, 0.45) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
-        border-radius: 30px !important;
-        border: 1px solid rgba(255, 255, 255, 0.7) !important;
-        box-shadow: 0 15px 35px rgba(216, 27, 96, 0.15) !important;
+        border-radius: 25px !important;
+        border: 1px solid rgba(255, 255, 255, 0.8) !important;
+        box-shadow: 0 20px 40px rgba(216, 27, 96, 0.15) !important;
         padding: 24px !important;
-        width: 100% !important;
-        max-width: 280px !important;
-        text-align: left !important;
+        width: 280px !important;
+        box-sizing: border-box !important;
       }
 
-      .website-img-box {
+      .cake-img-container {
         width: 100% !important;
         height: 200px !important;
-        border-radius: 20px !important;
+        border-radius: 18px !important;
         overflow: hidden !important;
-        margin-bottom: 15px !important;
-        background: rgba(255, 255, 255, 0.4) !important;
+        margin-bottom: 16px !important;
+        background: rgba(255, 255, 255, 0.5) !important;
       }
 
-      .website-img-box img {
+      .cake-img-container img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
       }
 
-      .card-tag {
+      .cake-badge {
         font-size: 11px !important;
         font-weight: 700 !important;
         color: #d81b60 !important;
         letter-spacing: 1px !important;
-        text-transform: uppercase !important;
         margin-bottom: 4px !important;
+        text-transform: uppercase !important;
       }
 
-      .card-title {
+      .cake-name {
         font-size: 20px !important;
         font-weight: 700 !important;
-        color: #4a154b !important;
-        margin-bottom: 15px !important;
+        color: #2d1537 !important;
+        margin-bottom: 20px !important;
       }
 
-      .card-footer {
+      .cake-bottom {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
       }
 
-      .card-price {
+      .cake-price {
         font-size: 16px !important;
         font-weight: 700 !important;
         color: #d81b60 !important;
       }
 
-      .card-order-btn {
-        background: rgba(255, 255, 255, 0.8) !important;
-        border: 1px solid rgba(255, 255, 255, 0.9) !important;
-        color: #4a154b !important;
-        font-weight: 600 !important;
-        padding: 8px 20px !important;
+      .order-btn {
+        background: #ffffff !important;
+        color: #2d1537 !important;
+        border: none !important;
+        padding: 8px 22px !important;
         border-radius: 50px !important;
+        font-weight: 600 !important;
         font-size: 14px !important;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+        cursor: pointer !important;
       }
     `);
 
     const createClass = window.createClass || React.createClass;
     const h = window.h || React.createElement;
 
-    // 2. CMS එකට අදාළ Preview Component එක නිර්මාණය කිරීම
-    const CakesPreview = createClass({
+    // 2. Website එකේ UI structure එකටම සමාන React Preview Component එක
+    const WebsiteUIPreview = createClass({
       render: function() {
         const entry = this.props.entry;
         const cakes = entry.getIn(['data', 'cakes']);
         const getAsset = this.props.getAsset;
 
         if (!cakes || !cakes.size) {
-          return h('div', { className: 'preview-list-wrapper', style: { color: '#4a154b', fontWeight: '600' } }, 'No cakes added yet.');
+          return h('div', { style: { color: '#4a154b', fontWeight: '600' } }, 'No cakes added yet.');
         }
 
-        const cakeElements = cakes.toArray().map((cake, index) => {
-          const title = cake.get('title') || 'Cake Title';
-          const price = cake.get('price') || 'Rs. 0';
+        const items = cakes.toArray().map((cake, index) => {
+          const title = cake.get('title') || 'Vanila Cake';
+          const price = cake.get('price') || 'Rs. LKR 500';
           const image = cake.get('image');
           const imageUrl = image ? getAsset(image).toString() : '';
 
-          return h('div', { key: index, className: 'website-glass-card' },
-            imageUrl ? h('div', { className: 'website-img-box' },
+          return h('div', { key: index, className: 'glass-card' },
+            imageUrl ? h('div', { className: 'cake-img-container' },
               h('img', { src: imageUrl, alt: title })
             ) : null,
-            h('div', { className: 'card-tag' }, 'SPECIAL'),
-            h('div', { className: 'card-title' }, title),
-            h('div', { className: 'card-footer' },
-              h('div', { className: 'card-price' }, price),
-              h('button', { className: 'card-order-btn' }, 'Order')
+            h('div', { className: 'cake-badge' }, 'SPECIAL'),
+            h('div', { className: 'cake-name' }, title),
+            h('div', { className: 'cake-bottom' },
+              h('div', { className: 'cake-price' }, price),
+              h('button', { className: 'order-btn' }, 'Order')
             )
           );
         });
 
-        return h('div', { className: 'preview-list-wrapper' }, cakeElements);
+        return h('div', { className: 'cake-grid' }, items);
       }
     });
 
-    CMS.registerPreviewTemplate('cakes_list', CakesPreview);
+    CMS.registerPreviewTemplate('cakes_list', WebsiteUIPreview);
   </script>
 </body>
 </html>
