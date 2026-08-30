@@ -1,0 +1,9 @@
+{
+  "cakes": [
+    {
+      "title": "Vanila Cake",
+      "price": "LKR 500",
+      "image": "/images/cakes/delicious-pink-cake-with-cherry-toppings-and-creamy-swirls-on-a-golden-base-png.webp"
+    }
+  ]
+}
