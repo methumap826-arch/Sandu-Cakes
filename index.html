@@ -23,373 +23,167 @@
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
     
-    /* Modern Glassmorphism Styling */
     --glass-bg: rgba(255, 255, 255, 0.25);
     --glass-border: 1px solid rgba(255, 255, 255, 0.4);
     --glass-blur: blur(16px);
     --glass-shadow: 0 8px 32px 0 rgba(219, 39, 119, 0.1);
   }
 
-  * { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; max-width: 100vw; overflow-x: hidden; }
 
-  html, body {
-    width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
-  }
-
-  /* Multi-Color Gradient Background */
   body {
     font-family: var(--font-body);
     background: linear-gradient(135deg, #fff5f8 0%, #fbcfe8 45%, #f472b6 80%, #db2777 100%);
     background-attachment: fixed;
     color: var(--text-color);
     line-height: 1.5;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
   }
 
-  /* Glassy Transparent Navigation Bar */
   nav {
-    position: fixed;
-    top: 16px; left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 32px);
-    max-width: 1200px;
-    z-index: 1000;
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: var(--glass-border);
-    border-radius: 50px;
-    box-shadow: var(--glass-shadow);
+    position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+    width: calc(100% - 32px); max-width: 1200px; z-index: 1000;
+    padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255, 255, 255, 0.2); backdrop-filter: var(--glass-blur);
+    border: var(--glass-border); border-radius: 50px; box-shadow: var(--glass-shadow);
   }
 
-  .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
+  .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-profile-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+  .logo { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--accent-pink-soft); }
 
-  .nav-profile-img {
-    width: 36px; height: 36px;
-    border-radius: 50%; object-fit: cover;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-  }
-
-  .logo {
-    font-family: var(--font-heading);
-    font-size: 20px; font-weight: 700;
-    letter-spacing: 0.5px;
-    color: var(--accent-pink-soft);
-  }
-
-  .nav-links { 
-    display: flex; gap: 24px; list-style: none; 
-  }
-
-  .nav-links a {
-    color: var(--text-color);
-    text-decoration: none; font-weight: 600; font-size: 14px;
-    transition: opacity 0.2s;
-  }
-
-  .nav-links a:hover { opacity: 0.7; }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a { color: var(--text-color); text-decoration: none; font-weight: 600; font-size: 14px; }
 
   .nav-socials { display: flex; gap: 8px; }
-
   .icon-btn {
-    width: 36px; height: 36px;
-    border-radius: 50%; display: grid; place-items: center;
-    color: var(--accent-pink-soft); text-decoration: none;
-    background: rgba(255, 255, 255, 0.3);
-    border: var(--glass-border);
-    transition: background 0.2s;
+    width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+    color: var(--accent-pink-soft); text-decoration: none; background: rgba(255, 255, 255, 0.3); border: var(--glass-border);
   }
-  .icon-btn:hover { background: rgba(255, 255, 255, 0.5); }
   .icon-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
   /* Hero Section */
   .hero-cover {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 100px 6% 0;
-    background-color: transparent;
+    position: relative; width: 100%; min-height: 480px; height: 70vh;
+    display: flex; align-items: center; justify-content: flex-start;
+    padding: 100px 6% 40px;
     background-image: url('https://static.vecteezy.com/system/resources/thumbnails/065/429/236/small_2x/delicious-pink-cake-with-cherry-toppings-and-creamy-swirls-on-a-golden-base-png.png');
-    background-repeat: no-repeat;
-    background-size: 48%;
-    background-position: right 4% center;
+    background-repeat: no-repeat; background-size: contain; background-position: right 4% center;
   }
 
-  .hero-content { 
-    position: relative; 
-    z-index: 2; 
-    max-width: 520px; 
-  }
-
+  .hero-content { position: relative; z-index: 2; max-width: 520px; }
   .badge {
-    display: inline-block; padding: 6px 16px;
-    background: rgba(255, 255, 255, 0.35);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: var(--glass-border);
-    border-radius: 50px;
-    font-family: var(--font-heading);
-    font-size: 12px; font-weight: 700; letter-spacing: 1px;
-    text-transform: uppercase; color: var(--accent-pink-soft); margin-bottom: 14px;
-    box-shadow: var(--glass-shadow);
+    display: inline-block; padding: 6px 16px; background: rgba(255, 255, 255, 0.35);
+    border: var(--glass-border); border-radius: 50px; font-family: var(--font-heading);
+    font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--accent-pink-soft); margin-bottom: 14px;
   }
-
-  .hero-content h1 {
-    font-family: var(--font-heading);
-    font-size: 52px; font-weight: 700; line-height: 1.1;
-    color: var(--accent-pink-soft); margin-bottom: 16px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-
+  .hero-content h1 { font-family: var(--font-heading); font-size: 52px; font-weight: 700; color: var(--accent-pink-soft); margin-bottom: 16px; }
   .hero-content p { font-size: 16px; opacity: 0.9; margin-bottom: 28px; font-weight: 500; }
 
   .cta-group { display: flex; gap: 14px; flex-wrap: wrap; }
-
-  /* Glassy Buttons */
   .btn {
     display: inline-flex; align-items: center; justify-content: center;
-    padding: 14px 28px; border-radius: 50px;
-    font-weight: 700; font-size: 15px; text-decoration: none;
-    transition: all 0.25s ease; cursor: pointer; text-align: center;
-    font-family: var(--font-heading);
-    letter-spacing: 0.5px;
-    border: none;
+    padding: 12px 26px; border-radius: 50px; font-weight: 700; font-size: 14px;
+    text-decoration: none; cursor: pointer; font-family: var(--font-heading); border: none;
   }
+  .btn-primary { background: var(--accent-pink-soft); color: #fff; box-shadow: 0 6px 18px rgba(219, 39, 119, 0.3); }
+  .btn-secondary { background: rgba(255, 255, 255, 0.4); border: var(--glass-border); color: var(--text-color); }
 
-  .btn-primary { 
-    background: var(--accent-pink-soft); 
-    color: #ffffff; 
-    box-shadow: 0 6px 18px rgba(219, 39, 119, 0.3);
-  }
-  .btn-primary:hover {
-    background: var(--accent-pink-button);
-    transform: translateY(-2px);
-  }
-  
-  .btn-secondary {
-    background: rgba(255, 255, 255, 0.4); 
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: var(--glass-border);
-    color: var(--text-color);
-  }
-  .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.6);
-  }
+  /* Cake Grid Fixed Size */
+  .menu-section, .order-section, .socials { padding: 40px 16px; max-width: 1200px; margin: 0 auto; }
+  .section-title { font-size: 36px; font-weight: 700; text-align: center; font-family: var(--font-heading); color: var(--accent-pink-soft); }
+  .section-sub { text-align: center; opacity: 0.85; margin-bottom: 30px; font-size: 15px; font-weight: 500; }
 
-  /* Sections Layout */
-  .menu-section, .order-section, .socials {
-    padding: 80px 16px 40px; max-width: 1200px; margin: 0 auto;
+  .cake-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, 260px); 
+    justify-content: center;
+    gap: 24px; 
   }
-
-  .section-title {
-    font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 8px;
-    font-family: var(--font-heading); color: var(--accent-pink-soft);
-    letter-spacing: 0.5px;
-  }
-
-  .section-sub { text-align: center; opacity: 0.85; margin-bottom: 40px; font-size: 15px; font-weight: 500; }
-
-  /* Glass Cards */
-  .cake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
 
   .cake-card { 
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: var(--glass-border);
-    border-radius: 24px;
-    overflow: hidden; 
-    display: flex; flex-direction: column;
-    box-shadow: var(--glass-shadow);
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    width: 260px;
+    background: var(--glass-bg); backdrop-filter: var(--glass-blur);
+    border: var(--glass-border); border-radius: 24px; overflow: hidden;
+    display: flex; flex-direction: column; box-shadow: var(--glass-shadow);
+    transition: transform 0.2s ease;
   }
+  .cake-card:hover { transform: translateY(-4px); }
 
-  .cake-card:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.45);
-    box-shadow: 0 12px 40px 0 rgba(219, 39, 119, 0.2);
-  }
+  .cake-img-wrapper { height: 220px; width: 100%; overflow: hidden; }
+  .cake-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
-  .cake-img-wrapper { position: relative; aspect-ratio: 4/3; width: 100%; overflow: hidden; }
-  .cake-img-wrapper img { 
-    width: 100%; height: 100%; object-fit: cover; 
-    transition: transform 0.4s ease;
-  }
-  .cake-card:hover .cake-img-wrapper img {
-    transform: scale(1.05);
-  }
+  .cake-meta { padding: 18px; display: flex; flex-direction: column; flex: 1; }
+  .cake-label { font-family: var(--font-heading); font-size: 11px; font-weight: 700; color: var(--accent-pink-soft); text-transform: uppercase; margin-bottom: 4px; }
+  .cake-meta h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .cake-meta p { font-size: 12px; opacity: 0.8; margin-bottom: 14px; flex: 1; }
 
-  .cake-meta { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-  .cake-label { 
-    font-family: var(--font-heading);
-    font-size: 12px; font-weight: 700; color: var(--accent-pink-soft); 
-    text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px;
-  }
-  .cake-meta h3 { font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .cake-meta p { font-size: 13px; opacity: 0.85; margin-bottom: 16px; flex: 1; font-weight: 400; }
+  .cake-action { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
+  .cake-price { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--accent-pink-soft); }
 
-  .cake-action { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .cake-price { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--accent-pink-soft); }
-
-  /* Glass Form Container */
+  /* Form Section */
   .form-card { 
-    padding: 32px 24px; border-radius: 28px; max-width: 650px; margin: 0 auto; 
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: var(--glass-border);
-    box-shadow: var(--glass-shadow);
+    padding: 28px 20px; border-radius: 24px; max-width: 600px; margin: 0 auto; 
+    background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: var(--glass-border);
   }
-  .form-group { margin-bottom: 20px; }
-  .form-group label { 
-    display: block; margin-bottom: 8px; font-weight: 700; font-size: 14px; 
-    font-family: var(--font-heading); color: var(--accent-pink-soft); 
-    letter-spacing: 0.5px;
-  }
-
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; margin-bottom: 6px; font-weight: 700; font-size: 13px; font-family: var(--font-heading); color: var(--accent-pink-soft); }
   .form-control {
-    width: 100%; padding: 14px 18px;
-    background: rgba(255, 255, 255, 0.5); border: var(--glass-border);
-    border-radius: 16px; color: var(--text-color); font-size: 14px; outline: none;
-    font-family: var(--font-body); font-weight: 500;
-    transition: background 0.2s, box-shadow 0.2s;
-  }
-  .form-control:focus {
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 0 2px var(--accent-light-pink);
+    width: 100%; padding: 12px 16px; background: rgba(255, 255, 255, 0.5);
+    border: var(--glass-border); border-radius: 12px; color: var(--text-color); font-size: 14px; outline: none;
   }
 
-  .payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+  .payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
   .payment-option-card {
-    border-radius: 18px; padding: 14px;
-    cursor: pointer; background: rgba(255, 255, 255, 0.3);
+    border-radius: 14px; padding: 12px; cursor: pointer; background: rgba(255, 255, 255, 0.3);
     border: var(--glass-border); text-align: center;
-    transition: all 0.2s ease;
   }
-  .payment-option-card.active { 
-    background: rgba(255, 255, 255, 0.7); 
-    box-shadow: 0 4px 16px rgba(219, 39, 119, 0.15);
-  }
+  .payment-option-card.active { background: rgba(255, 255, 255, 0.7); }
   .payment-option-card input { display: none; }
 
-  .payment-details-box { margin-top: 14px; padding: 18px; border-radius: 18px; background: rgba(255, 255, 255, 0.4); border: var(--glass-border); display: none; }
+  .payment-details-box { margin-top: 12px; padding: 14px; border-radius: 14px; background: rgba(255, 255, 255, 0.4); border: var(--glass-border); display: none; }
   .payment-details-box.show { display: block; }
 
   .btn-submit {
-    width: 100%; padding: 16px; border-radius: 50px;
-    background: var(--accent-pink-soft);
-    color: #fff; font-size: 16px; font-weight: 700; border: none; cursor: pointer; margin-top: 16px;
-    box-shadow: 0 6px 18px rgba(219, 39, 119, 0.25);
+    width: 100%; padding: 14px; border-radius: 50px; background: var(--accent-pink-soft);
+    color: #fff; font-size: 15px; font-weight: 700; border: none; cursor: pointer; margin-top: 14px;
     font-family: var(--font-heading);
-    letter-spacing: 0.5px;
-    transition: all 0.2s;
-  }
-  .btn-submit:hover { 
-    background: var(--accent-pink-button); 
-    transform: translateY(-2px);
   }
 
-  /* Glass Social Cards */
-  .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto; }
+  .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; max-width: 800px; margin: 0 auto; }
   .social-card { 
-    padding: 22px; text-align: center; text-decoration: none; color: inherit; 
-    border-radius: 20px; 
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    transition: all 0.3s ease; 
+    padding: 18px; text-align: center; text-decoration: none; color: inherit; 
+    border-radius: 18px; background: var(--glass-bg); border: var(--glass-border); 
   }
-  .social-card:hover { 
-    transform: translateY(-4px); 
-    background: rgba(255, 255, 255, 0.5); 
-    box-shadow: 0 10px 25px rgba(219, 39, 119, 0.15);
-  }
-  .social-card h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--accent-pink-soft); }
+  .social-card h3 { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--accent-pink-soft); }
 
-  /* Modal */
   .modal-overlay {
     position: fixed; inset: 0; background: rgba(59, 7, 100, 0.3);
     backdrop-filter: blur(12px); display: none; place-items: center; z-index: 2000; padding: 16px;
   }
   .modal-overlay.active { display: grid; }
-  
-  .modal-box {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: var(--glass-border);
-    padding: 32px 24px; border-radius: 28px;
-    text-align: center; max-width: 380px; width: 100%;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  }
+  .modal-box { background: rgba(255, 255, 255, 0.9); padding: 28px; border-radius: 24px; text-align: center; max-width: 360px; width: 100%; }
+  .success-icon { width: 48px; height: 48px; background: #dcfce7; color: #16a34a; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 10px; font-size: 24px; font-weight: bold; }
 
-  .success-icon {
-    width: 56px; height: 56px; background: #dcfce7; color: #16a34a;
-    border-radius: 50%; display: grid; place-items: center; margin: 0 auto 14px;
-    font-size: 28px; font-weight: bold;
-  }
+  footer { text-align: center; padding: 24px 16px; opacity: 0.8; font-size: 12px; }
 
-  footer { text-align: center; padding: 36px 16px; opacity: 0.8; font-size: 13px; font-weight: 500; }
-
-  /* Mobile Optimizations */
   @media (max-width: 768px) {
     nav { top: 8px; width: calc(100% - 24px); padding: 8px 14px; }
     .nav-links { display: none; }
-    
     .hero-cover {
-      height: auto;
-      min-height: 100vh;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding-top: 120px;
-      padding-bottom: 310px;
-      background-size: 260px auto;
-      background-position: center bottom 15px;
-      text-align: center;
+      height: auto; min-height: 80vh; flex-direction: column; justify-content: flex-start;
+      padding-top: 110px; padding-bottom: 220px; background-size: 220px auto; background-position: center bottom 10px; text-align: center;
     }
-    
-    .hero-content h1 { font-size: 38px; }
-    .hero-content p { font-size: 15px; }
-
+    .hero-content h1 { font-size: 36px; }
     .cta-group { flex-direction: column; width: 100%; }
-    .cta-group .btn { width: 100%; }
-
-    .cake-action { flex-direction: column; align-items: stretch; }
-    .cake-action .btn { width: 100%; }
-
     .payment-methods { grid-template-columns: 1fr; }
+    .cake-grid { grid-template-columns: 1fr; }
+    .cake-card { width: 100%; max-width: 300px; }
   }
 </style>
 </head>
 <body>
 
-  <!-- Floating Navigation -->
   <nav>
     <a href="#home" class="logo-container">
       <img src="logo.jpg" alt="Logo" class="nav-profile-img" onerror="this.style.display='none'">
@@ -407,7 +201,6 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <header id="home" class="hero-cover">
     <div class="hero-content">
       <span class="badge">Artisan Bakery</span>
@@ -420,18 +213,15 @@
     </div>
   </header>
 
-  <!-- Dynamic Menu Section -->
   <section id="menu" class="menu-section">
     <h2 class="section-title">Signature Menu</h2>
     <p class="section-sub">Handcrafted Daily Favorites</p>
 
     <div class="cake-grid" id="cake-container">
-      <!-- Admin එකෙන් Add කරන Cakes මෙතැනට Load වේ -->
-      <p style="text-align:center; grid-column: 1/-1; font-weight:600;">Loading fresh cakes...</p>
+      <p style="text-align:center; grid-column: 1/-1;">Loading fresh cakes...</p>
     </div>
   </section>
 
-  <!-- Order & Payment Form -->
   <section id="order" class="order-section">
     <h2 class="section-title">Place Your Cake Order</h2>
     <p class="section-sub">Choose Cash on Delivery or Pay Online via PayPal / Cards</p>
@@ -451,9 +241,26 @@
         <div class="form-group">
           <label>Select Cake</label>
           <select id="cakeSelect" name="Selected Cake" class="form-control" required>
-            <!-- Cakes auto populate into options -->
             <option value="">Select a cake from menu</option>
           </select>
+        </div>
+
+        <!-- NEW: Size / Weight Dropdown Option -->
+        <div class="form-group">
+          <label>Select Cake Size / Weight</label>
+          <select id="cakeSizeSelect" name="Cake Size" class="form-control" onchange="toggleCustomSizeInput()" required>
+            <option value="500g">500g (0.5 Kg)</option>
+            <option value="1Kg" selected>1 Kg</option>
+            <option value="2Kg">2 Kg</option>
+            <option value="3Kg">3 Kg</option>
+            <option value="Other">Other / Custom Weight (Specify Below)</option>
+          </select>
+        </div>
+
+        <!-- Custom Weight Box (Appears when "Other" is selected) -->
+        <div class="form-group" id="customSizeGroup" style="display: none;">
+          <label>Specify Custom Size / Weight / Requirements</label>
+          <input type="text" id="customSizeInput" name="Custom Size Requirements" class="form-control" placeholder="e.g. 1.5 Kg, 5 Kg or 3-Tier Cake">
         </div>
 
         <div class="form-group">
@@ -489,7 +296,6 @@
     </div>
   </section>
 
-  <!-- Connect Section -->
   <section id="social" class="socials">
     <h2 class="section-title">Connect With Us</h2>
     <p class="section-sub">Follow Sandu Cake on Social Media</p>
@@ -509,12 +315,11 @@
     </div>
   </section>
 
-  <!-- Order Success Modal -->
   <div class="modal-overlay" id="successModal">
     <div class="modal-box">
       <div class="success-icon">✓</div>
       <h2 style="font-family: var(--font-heading); color: var(--accent-pink-soft); margin-bottom: 6px;">Order Complete!</h2>
-      <p style="font-size: 14px; opacity: 0.85; margin-bottom: 20px;">Thank you for ordering with Sandu Cake. We have received your order details!</p>
+      <p style="font-size: 13px; opacity: 0.85; margin-bottom: 18px;">Thank you for ordering with Sandu Cake. We have received your order details!</p>
       <button class="btn btn-primary" style="width: 100%;" onclick="closeModal()">OK</button>
     </div>
   </div>
@@ -522,7 +327,6 @@
   <footer>© 2026 • Sandu Cake • Sweet Moments Delivered.</footer>
 
   <script>
-    // Netlify CMS Cakes Dynamic Loader
     async function fetchCakes() {
       const container = document.getElementById('cake-container');
       const cakeSelect = document.getElementById('cakeSelect');
@@ -531,7 +335,13 @@
         const response = await fetch('/content/cakes/index.json');
         if (!response.ok) throw new Error('Data not found');
         const data = await response.json();
-        const cakes = data.cakes || [];
+        
+        let cakes = [];
+        if (Array.isArray(data)) {
+          cakes = data;
+        } else if (data.cakes && Array.isArray(data.cakes)) {
+          cakes = data.cakes;
+        }
 
         if(cakes.length === 0) {
           container.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">No cakes added yet. Please add cakes via Admin Panel (/admin).</p>';
@@ -542,12 +352,12 @@
         cakeSelect.innerHTML = '<option value="">Select a cake from menu</option>';
 
         cakes.forEach(cake => {
-          // Render Cake Cards
+          const badgeText = cake.badge || 'SPECIAL';
           container.innerHTML += `
             <article class="cake-card">
               <div class="cake-img-wrapper"><img src="${cake.image}" alt="${cake.title}"></div>
               <div class="cake-meta">
-                <div class="cake-label">Freshly Baked</div>
+                <div class="cake-label">${badgeText}</div>
                 <h3>${cake.title}</h3>
                 <p>${cake.description || ''}</p>
                 <div class="cake-action">
@@ -558,12 +368,11 @@
             </article>
           `;
 
-          // Fill Order Form Dropdown
           cakeSelect.innerHTML += `<option value="${cake.title} - Rs. ${cake.price}">${cake.title} - Rs. ${cake.price}</option>`;
         });
 
       } catch (err) {
-        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">No cakes currently listed. Add cakes via Admin Panel.</p>';
+        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">Add cakes via Admin Panel (/admin) to view them here.</p>';
       }
     }
 
@@ -574,6 +383,16 @@
           select.selectedIndex = i;
           break;
         }
+      }
+    }
+
+    function toggleCustomSizeInput() {
+      const sizeSelect = document.getElementById('cakeSizeSelect');
+      const customInputGroup = document.getElementById('customSizeGroup');
+      if (sizeSelect.value === 'Other') {
+        customInputGroup.style.display = 'block';
+      } else {
+        customInputGroup.style.display = 'none';
       }
     }
 
@@ -602,6 +421,7 @@
       document.getElementById('successModal').classList.remove('active');
       document.getElementById('cakeOrderForm').reset();
       togglePayment('cod');
+      toggleCustomSizeInput();
     }
 
     function sendOrderToFormspree(paymentStatus) {
