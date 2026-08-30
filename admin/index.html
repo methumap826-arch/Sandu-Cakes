@@ -9,7 +9,7 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <style>
-    /* Admin Dashboard overall pink glassy theme */
+    /* Admin Dashboard Glassy Pink Theme */
     html, body, #nc-root {
       background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%) !important;
       background-attachment: fixed !important;
@@ -22,7 +22,7 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
   <script>
-    // Preview iframe එක ඇතුළට website එකේ card design එක එකතු කිරීම
+    // 1. Website එකේ Card එකේ Design එක preview iframe එකට ලබා දීම
     CMS.registerPreviewStyle(`
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
       
@@ -38,14 +38,15 @@
         margin: 0 !important;
       }
 
-      .preview-grid {
+      .preview-container {
         display: flex !important;
         flex-wrap: wrap !important;
         gap: 25px !important;
         justify-content: center !important;
+        width: 100% !important;
       }
 
-      /* Website එකේ තියෙන Glassy Card එකේ විදිහටමයි */
+      /* Website එකේ screenshot එකේ ඇති විදිහටම Glassy Card එක */
       .website-glass-card {
         background: rgba(255, 255, 255, 0.4) !important;
         backdrop-filter: blur(20px) !important;
@@ -56,6 +57,7 @@
         padding: 24px !important;
         width: 260px !important;
         box-sizing: border-box !important;
+        text-align: left !important;
       }
 
       .website-img-box {
@@ -113,24 +115,22 @@
       }
     `);
 
-    const createClass = window.createClass || React.createClass;
-    const h = window.h || React.createElement;
-
-    const CakesPreview = createClass({
+    // 2. Decap CMS Preview Component Registered properly
+    var CakesPreview = createClass({
       render: function() {
-        const entry = this.props.entry;
-        const cakes = entry.getIn(['data', 'cakes']);
-        const getAsset = this.props.getAsset;
+        var entry = this.props.entry;
+        var cakes = entry.getIn(['data', 'cakes']);
+        var getAsset = this.props.getAsset;
 
         if (!cakes || !cakes.size) {
-          return h('div', { style: { color: '#4a154b', fontWeight: '600' } }, 'No cakes added yet.');
+          return h('div', { style: { color: '#4a154b', fontWeight: '600', fontFamily: 'Poppins' } }, 'No cakes added yet.');
         }
 
-        const items = cakes.toArray().map((cake, index) => {
-          const title = cake.get('title') || 'Vanila Cake';
-          const price = cake.get('price') || 'Rs. LKR 500';
-          const image = cake.get('image');
-          const imageUrl = image ? getAsset(image).toString() : '';
+        var cakeCards = cakes.map((cake, index) => {
+          var title = cake.get('title') || 'Vanila Cake';
+          var price = cake.get('price') || 'Rs. LKR 500';
+          var image = cake.get('image');
+          var imageUrl = image ? getAsset(image).toString() : '';
 
           return h('div', { key: index, className: 'website-glass-card' },
             imageUrl ? h('div', { className: 'website-img-box' },
@@ -145,11 +145,13 @@
           );
         });
 
-        return h('div', { className: 'preview-grid' }, items);
+        return h('div', { className: 'preview-container' }, cakeCards.toArray());
       }
     });
 
-    CMS.registerPreviewTemplate('cakes_list', CakesPreview);
+    // Collection Name එකට හරියටම Component එක Bind කිරීම
+    CMS.registerPreviewTemplate('cakes_menu', CakesPreview);
+    CMS.registerPreviewTemplate('cake_data', CakesPreview);
   </script>
 </body>
 </html>
