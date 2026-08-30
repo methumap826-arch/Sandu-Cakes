@@ -4,6 +4,11 @@
       "title": "Vanila Cake",
       "price": "LKR 500",
       "image": "/images/cakes/delicious-pink-cake-with-cherry-toppings-and-creamy-swirls-on-a-golden-base-png.webp"
+    },
+    {
+      "title": "Chocolate Cake",
+      "price": "1000",
+      "image": "/images/cakes/img4you.com_transparent-background-png-chocolate-cake-1731320759461.png"
     }
   ]
 }
