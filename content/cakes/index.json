@@ -9,6 +9,12 @@
       "title": "Chocolate Cake",
       "price": "1000",
       "image": "/images/cakes/img4you.com_transparent-background-png-chocolate-cake-1731320759461.png"
+    },
+    {
+      "title": "Cupcake Bundle",
+      "price": "200",
+      "description": "4 pieces",
+      "image": "/images/cakes/49586.png"
     }
   ]
 }
