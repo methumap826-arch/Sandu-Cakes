@@ -9,144 +9,198 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <style>
-    /* Global Pink Gradient Background */
-    html, body, #nc-root {
+    /* Force Glassy Pink Background on entire Admin App */
+    html, body, #nc-root, div[id^="nc-root"] {
       background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%) !important;
       background-attachment: fixed !important;
       font-family: 'Poppins', sans-serif !important;
-      min-height: 100vh !important;
-      color: #5c1d3d !important;
+      color: #4a154b !important;
     }
 
-    /* Glassmorphism Header */
+    /* Top Bar */
     header[class*="AppHeader"] {
       background: rgba(255, 255, 255, 0.35) !important;
       backdrop-filter: blur(16px) !important;
       -webkit-backdrop-filter: blur(16px) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
-      box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.15) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
     }
 
-    /* Main Container Cleanup */
+    /* Main Container overrides */
     main, div[class*="AppMainContainer"] {
       background: transparent !important;
     }
 
-    /* Left Sidebar & Form Cards (Glass Cards) */
+    /* Left Control Pane & Cards */
     div[class*="SidebarContainer"],
     div[class*="CollectionTop"],
-    div[class*="EditorControlPane"] {
+    div[class*="EditorControlPane"],
+    div[class*="ControlContainer"],
+    div[class*="ListControl"] {
       background: rgba(255, 255, 255, 0.3) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
       border: 1px solid rgba(255, 255, 255, 0.6) !important;
-      border-radius: 24px !important;
-      box-shadow: 0 10px 40px rgba(230, 0, 126, 0.15) !important;
-      margin: 15px !important;
-      padding: 20px !important;
+      border-radius: 20px !important;
+      box-shadow: 0 8px 32px 0 rgba(230, 0, 126, 0.12) !important;
+      margin-bottom: 12px !important;
     }
 
-    /* Input Fields (Glassy Inputs) */
-    input[type="text"], 
-    textarea, 
-    select,
-    div[class*="ControlContainer"] {
-      background: rgba(255, 255, 255, 0.55) !important;
+    /* Input Controls */
+    input[type="text"], textarea, select {
+      background: rgba(255, 255, 255, 0.6) !important;
       backdrop-filter: blur(10px) !important;
       border: 1px solid rgba(255, 255, 255, 0.8) !important;
-      border-radius: 14px !important;
-      color: #4a154b !important;
+      border-radius: 12px !important;
+      color: #3b0764 !important;
       font-family: 'Poppins', sans-serif !important;
-      font-weight: 500 !important;
-      transition: all 0.3s ease !important;
     }
 
-    input[type="text"]:focus, 
-    textarea:focus {
-      background: rgba(255, 255, 255, 0.9) !important;
+    input[type="text"]:focus, textarea:focus {
+      background: rgba(255, 255, 255, 0.95) !important;
       border-color: #d81b60 !important;
-      box-shadow: 0 0 15px rgba(216, 27, 96, 0.3) !important;
+      box-shadow: 0 0 12px rgba(216, 27, 96, 0.3) !important;
       outline: none !important;
     }
 
-    /* Form Labels */
     label[class*="ControlLabel"] {
-      color: #a81c51 !important;
+      color: #be185d !important;
       font-weight: 700 !important;
-      font-size: 13px !important;
-      text-transform: uppercase !important;
-      letter-spacing: 0.8px !important;
     }
 
-    /* Glossy Pink Buttons */
-    button, 
-    a[class*="Button"] {
-      border-radius: 50px !important;
-      font-family: 'Poppins', sans-serif !important;
-      font-weight: 600 !important;
-      transition: all 0.3s ease !important;
-    }
-
-    /* Publish & Action Buttons */
-    button[class*="button-green"], 
-    button[class*="button-blue"],
-    a[class*="button-green"] {
-      background: linear-gradient(135deg, #ff69b4 0%, #d81b60 100%) !important;
-      border: none !important;
-      color: #ffffff !important;
-      box-shadow: 0 6px 20px rgba(216, 27, 96, 0.35) !important;
-    }
-
-    button[class*="button-green"]:hover {
-      transform: translateY(-2px) !important;
-      box-shadow: 0 8px 25px rgba(216, 27, 96, 0.5) !important;
-    }
-
-    /* Right Side Live Preview Container */
+    /* Right Side Preview Pane Window */
     div[class*="PreviewPaneContainer"] {
-      background: rgba(255, 255, 255, 0.25) !important;
+      background: rgba(255, 255, 255, 0.2) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
-      border: 1px solid rgba(255, 255, 255, 0.6) !important;
-      border-radius: 24px !important;
-      margin: 15px !important;
-      box-shadow: 0 10px 40px rgba(230, 0, 126, 0.15) !important;
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
+      border-radius: 20px !important;
+      margin: 10px !important;
       overflow: hidden !important;
-    }
-
-    /* Card List Items inside Admin */
-    div[class*="ListControl"],
-    div[class*="ObjectControl"] {
-      background: rgba(255, 255, 255, 0.35) !important;
-      border-radius: 16px !important;
-      border: 1px solid rgba(255, 255, 255, 0.6) !important;
-      margin-bottom: 12px !important;
     }
   </style>
 </head>
 <body>
 
+  <!-- Decap CMS Core Script -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
+  <!-- Custom Glassy Preview Script -->
   <script>
+    // 1. Inject Styles directly into Preview iframe
     CMS.registerPreviewStyle(`
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+      
       body {
         background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%) !important;
+        background-attachment: fixed !important;
         font-family: 'Poppins', sans-serif !important;
-        padding: 25px !important;
-        color: #4a154b !important;
+        padding: 20px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        min-height: 90vh !important;
       }
-      h1, h2, h3 {
+
+      .preview-glass-card {
+        background: rgba(255, 255, 255, 0.35) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border-radius: 24px !important;
+        border: 1px solid rgba(255, 255, 255, 0.6) !important;
+        box-shadow: 0 10px 35px rgba(216, 27, 96, 0.2) !important;
+        padding: 24px !important;
+        width: 100% !important;
+        max-width: 360px !important;
+        text-align: center !important;
+      }
+
+      .preview-img-box {
+        width: 100% !important;
+        height: 220px !important;
+        border-radius: 18px !important;
+        overflow: hidden !important;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+        margin-bottom: 16px !important;
+        background: rgba(255,255,255,0.4) !important;
+      }
+
+      .preview-img-box img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+      }
+
+      .preview-title {
+        font-size: 22px !important;
+        font-weight: 700 !important;
         color: #8b2657 !important;
+        margin-bottom: 6px !important;
       }
-      img {
-        max-width: 100% !important;
-        border-radius: 20px !important;
-        box-shadow: 0 10px 30px rgba(216, 27, 96, 0.25) !important;
-        border: 2px solid rgba(255, 255, 255, 0.8) !important;
+
+      .preview-price {
+        display: inline-block !important;
+        background: rgba(216, 27, 96, 0.15) !important;
+        color: #d81b60 !important;
+        font-weight: 700 !important;
+        padding: 6px 16px !important;
+        border-radius: 50px !important;
+        font-size: 15px !important;
+        margin-bottom: 12px !important;
+        border: 1px solid rgba(216, 27, 96, 0.3) !important;
+      }
+
+      .preview-desc {
+        font-size: 13px !important;
+        color: #5c1d3d !important;
+        line-height: 1.5 !important;
+        margin-bottom: 18px !important;
+      }
+
+      .preview-btn {
+        width: 100% !important;
+        padding: 12px !important;
+        border-radius: 12px !important;
+        background: linear-gradient(135deg, #ff69b4, #d81b60) !important;
+        color: white !important;
+        font-weight: 600 !important;
+        border: none !important;
+        box-shadow: 0 6px 18px rgba(216, 27, 96, 0.35) !important;
       }
     `);
-  </script>
 
+    // 2. Custom Preview React Component for Cakes List
+    const CakesPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        const cakes = entry.getIn(['data', 'cakes']);
+        const getAsset = this.props.getAsset;
+
+        if (!cakes) return h('div', {}, 'No cakes added yet.');
+
+        return h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center' } },
+          cakes.map((cake, index) => {
+            const title = cake.get('title') || 'Cake Title';
+            const price = cake.get('price') || 'LKR 0';
+            const description = cake.get('description') || '';
+            const image = cake.get('image');
+            const imageUrl = image ? getAsset(image).toString() : '';
+
+            return h('div', { key: index, className: 'preview-glass-card' },
+              imageUrl ? h('div', { className: 'preview-img-box' },
+                h('img', { src: imageUrl, alt: title })
+              ) : null,
+              h('div', { className: 'preview-title' }, title),
+              h('div', { className: 'preview-price' }, price),
+              description ? h('div', { className: 'preview-desc' }, description) : null,
+              h('button', { className: 'preview-btn' }, 'Order Now 🍰')
+            );
+          })
+        );
+      }
+    });
+
+    // Register Component for "cakes_list" entry
+    CMS.registerPreviewTemplate('cakes_list', CakesPreview);
+  </script>
 </body>
 </html>
