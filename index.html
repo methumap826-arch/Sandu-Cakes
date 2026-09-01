@@ -39,13 +39,12 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   
-  /* Smooth scroll and hide scrollbars */
   html { 
     scroll-behavior: smooth; 
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
   }
   html::-webkit-scrollbar { 
-    display: none; /* Chrome, Safari, Opera */
+    display: none; 
   }
 
   html, body { 
@@ -63,16 +62,15 @@
     color: var(--cream);
     line-height: 1.55;
     perspective: 1400px;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
   }
 
   body::-webkit-scrollbar { 
-    display: none; /* Chrome, Safari, Opera */
+    display: none; 
   }
 
   ::selection { background: rgba(216,168,96,0.35); color: var(--cream); }
 
-  /* ---------- Ambient scene layers ---------- */
   .scene-layer {
     position: fixed; inset: 0; z-index: 0; pointer-events: none; will-change: transform;
   }
@@ -88,7 +86,6 @@
 
   a { color: inherit; }
 
-  /* ---------- Nav ---------- */
   nav {
     position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
     width: calc(100% - 32px); max-width: 1180px; z-index: 1000;
@@ -115,7 +112,6 @@
   .icon-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.12); }
   .icon-btn svg { width: 15px; height: 15px; fill: currentColor; }
 
-  /* ---------- Hero ---------- */
   .hero-cover {
     position: relative; width: 100%; min-height: 100vh; height: 100vh;
     display: flex; align-items: center; overflow: hidden;
@@ -185,7 +181,6 @@
   .scroll-cue .line { width: 1px; height: 28px; background: linear-gradient(180deg, var(--gold-soft), transparent); animation: pulse-line 2s ease-in-out infinite; }
   @keyframes pulse-line { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
 
-  /* ---------- Section shell ---------- */
   section { position: relative; z-index: 2; }
   .menu-section, .order-section, .socials { padding: 90px 16px; max-width: 1180px; margin: 0 auto; }
   .section-head { text-align: center; margin-bottom: 46px; }
@@ -193,7 +188,6 @@
   .section-title { font-size: clamp(30px, 4vw, 42px); font-weight: 600; font-family: var(--font-display); color: var(--cream); }
   .section-sub { color: var(--cream-dim); margin-top: 10px; font-size: 15px; font-weight: 500; }
 
-  /* ---------- Cake Grid ---------- */
   .reveal-stage { perspective: 1200px; }
   .cake-grid {
     display: grid;
@@ -238,36 +232,265 @@
   .cake-action { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
   .cake-price { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--gold-soft); }
 
-  /* ---------- Form ---------- */
   .form-card {
     padding: 34px 26px; border-radius: 28px; max-width: 600px; margin: 0 auto;
     background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
     border: var(--glass-border); box-shadow: var(--glass-shadow);
     opacity: 0; transform: translateY(60px) rotateX(10deg);
+    height: auto !important;
+    min-height: fit-content;
+    overflow: visible !important;
   }
   .form-card.in-view { animation: card-in 0.9s var(--ease) forwards; }
 
   .form-group { margin-bottom: 18px; }
   .form-group label { display: block; margin-bottom: 7px; font-weight: 700; font-size: 12.5px; font-family: var(--font-body); color: var(--gold-soft); letter-spacing: 0.02em; }
+  
   .form-control {
-    width: 100%; padding: 13px 16px; background: rgba(255,255,255,0.05);
-    border: var(--glass-border-soft); border-radius: 14px; color: var(--cream); font-size: 14px; outline: none;
-    font-family: var(--font-body); transition: border 0.2s ease, background 0.2s ease;
+    width: 100%; padding: 13px 16px; 
+    background: rgba(255, 255, 255, 0.04);
+    border: var(--glass-border-soft); 
+    border-radius: 16px; 
+    color: var(--cream); 
+    font-size: 14px; 
+    outline: none;
+    font-family: var(--font-body); 
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: border 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
   }
-  .form-control:focus { border-color: rgba(216,168,96,0.6); background: rgba(255,255,255,0.08); }
-  .form-control option { background: #221219; color: var(--cream); }
+  
+  .form-control:focus { 
+    border-color: rgba(216,168,96,0.5); 
+    background: rgba(255, 255, 255, 0.08); 
+    box-shadow: 0 0 15px rgba(216,168,96,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+
+  /* Custom Glassy Dropdowns */
+  .custom-select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 100%;
+  }
+
+  .custom-select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: var(--glass-border-soft);
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--cream);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: border 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .custom-select:hover { background: rgba(255, 255, 255, 0.08); }
+  .custom-select.open {
+    border-color: rgba(216,168,96,0.5);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(216,168,96,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+
+  .custom-select::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--gold-soft);
+    border-bottom: 2px solid var(--gold-soft);
+    transform: rotate(45deg);
+    transition: transform 0.25s ease;
+    margin-left: 10px;
+  }
+  .custom-select.open::after {
+    transform: rotate(-135deg);
+    margin-top: 4px;
+  }
+
+  .custom-options {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: rgba(28, 15, 24, 0.85);
+    border: var(--glass-border);
+    border-radius: 18px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255,255,255,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.98);
+    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
+    z-index: 100;
+    max-height: 240px;
+    overflow-y: auto;
+    padding: 6px;
+  }
+  .custom-options.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  .custom-option {
+    padding: 11px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--cream);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .custom-option:hover { background: rgba(216, 168, 96, 0.16); color: var(--gold-soft); }
+  .custom-option.selected { background: rgba(216, 168, 96, 0.25); color: var(--gold-soft); font-weight: 600; }
+
+  /* Custom Glassy Calendar Popup */
+  .custom-date-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .custom-date-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: var(--glass-border-soft);
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--cream);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: border 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  }
+  .custom-date-display:hover { background: rgba(255, 255, 255, 0.08); }
+  .custom-date-display.open {
+    border-color: rgba(216,168,96,0.5);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(216,168,96,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+
+  .calendar-popup {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 300px;
+    background: rgba(28, 15, 24, 0.92);
+    border: var(--glass-border);
+    border-radius: 20px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+    padding: 16px;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.98);
+    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
+  }
+  .calendar-popup.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  .cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--gold-soft);
+    font-weight: 600;
+  }
+  .cal-nav-btn {
+    background: rgba(255,255,255,0.06);
+    border: var(--glass-border-soft);
+    color: var(--cream);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: grid; place-items: center;
+    transition: background 0.2s ease;
+  }
+  .cal-nav-btn:hover { background: rgba(255,255,255,0.15); }
+
+  .cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--rose);
+    margin-bottom: 8px;
+  }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+  }
+  .cal-day {
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--cream);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .cal-day:hover { background: rgba(216, 168, 96, 0.2); color: var(--gold-soft); }
+  .cal-day.muted { color: rgba(247, 236, 221, 0.25); }
+  .cal-day.selected {
+    background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+    color: #241019;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(232,137,159,0.4);
+  }
+  .cal-day.today { border: 1px solid rgba(216, 168, 96, 0.5); }
+
   .form-control::placeholder { color: rgba(247,236,221,0.35); }
 
   .payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
   .payment-option-card {
-    border-radius: 16px; padding: 14px; cursor: pointer; background: rgba(255,255,255,0.04);
-    border: var(--glass-border-soft); text-align: center; transition: background 0.2s ease, border 0.2s ease;
+    border-radius: 16px; padding: 14px; cursor: pointer; 
+    background: rgba(255, 255, 255, 0.04);
+    border: var(--glass-border-soft); 
+    backdrop-filter: var(--glass-blur); 
+    -webkit-backdrop-filter: var(--glass-blur);
+    text-align: center; transition: background 0.2s ease, border 0.2s ease, transform 0.2s ease;
     font-size: 13.5px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
   }
+  .payment-option-card:hover { background: rgba(255, 255, 255, 0.08); }
   .payment-option-card.active { background: rgba(216,168,96,0.14); border-color: rgba(216,168,96,0.4); }
   .payment-option-card input { display: none; }
 
-  .payment-details-box { margin-top: 14px; padding: 16px; border-radius: 16px; background: rgba(255,255,255,0.04); border: var(--glass-border-soft); display: none; }
+  .payment-details-box { 
+    margin-top: 14px; padding: 16px; border-radius: 16px; 
+    background: rgba(255, 255, 255, 0.04); 
+    border: var(--glass-border-soft); 
+    backdrop-filter: var(--glass-blur); 
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    display: none; 
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
   .payment-details-box.show { display: block; }
 
   .btn-submit {
@@ -279,7 +502,6 @@
   }
   .btn-submit:hover { transform: translateY(-2px); }
 
-  /* ---------- Socials ---------- */
   .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto; }
   .social-card {
     padding: 22px; text-align: center; text-decoration: none; color: inherit;
@@ -333,6 +555,21 @@
     .cake-grid { grid-template-columns: 1fr; }
     .cake-card { width: 100%; max-width: 320px; margin: 0 auto; }
     .menu-section, .order-section, .socials { padding: 64px 16px; }
+
+    /* Mobile overrides to prevent container clipping or overflow issues */
+    .form-card {
+      position: relative !important;
+      height: auto !important;
+      min-height: fit-content !important;
+      overflow: visible !important;
+      padding: 20px 16px !important;
+    }
+    
+    .payment-details-box {
+      position: relative !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
   }
 </style>
 </head>
@@ -415,22 +652,38 @@
           <input type="tel" id="custPhone" name="Phone Number" class="form-control" placeholder="07X XXXXXXX" required>
         </div>
 
+        <!-- Custom Glassy Dropdown for Cake selection -->
         <div class="form-group">
           <label>Select Cake</label>
-          <select id="cakeSelect" name="Selected Cake" class="form-control" required>
-            <option value="">Select a cake from menu</option>
-          </select>
+          <div class="custom-select-wrapper" id="wrapper-cakeSelect">
+            <div class="custom-select" id="display-cakeSelect">Select a cake from menu</div>
+            <div class="custom-options" id="options-cakeSelect"></div>
+            <select id="cakeSelect" name="Selected Cake" style="display:none;" required>
+              <option value="">Select a cake from menu</option>
+            </select>
+          </div>
         </div>
 
+        <!-- Custom Glassy Dropdown for Cake Size selection -->
         <div class="form-group">
           <label>Select Cake Size / Weight</label>
-          <select id="cakeSizeSelect" name="Cake Size" class="form-control" onchange="toggleCustomSizeInput()" required>
-            <option value="500g">500g (0.5 Kg)</option>
-            <option value="1Kg" selected>1 Kg</option>
-            <option value="2Kg">2 Kg</option>
-            <option value="3Kg">3 Kg</option>
-            <option value="Other">Other / Custom Weight (Specify Below)</option>
-          </select>
+          <div class="custom-select-wrapper" id="wrapper-cakeSizeSelect">
+            <div class="custom-select" id="display-cakeSizeSelect">1 Kg</div>
+            <div class="custom-options" id="options-cakeSizeSelect">
+              <div class="custom-option" data-value="500g">500g (0.5 Kg)</div>
+              <div class="custom-option selected" data-value="1Kg">1 Kg</div>
+              <div class="custom-option" data-value="2Kg">2 Kg</div>
+              <div class="custom-option" data-value="3Kg">3 Kg</div>
+              <div class="custom-option" data-value="Other">Other / Custom Weight (Specify Below)</div>
+            </div>
+            <select id="cakeSizeSelect" name="Cake Size" style="display:none;" required>
+              <option value="500g">500g (0.5 Kg)</option>
+              <option value="1Kg" selected>1 Kg</option>
+              <option value="2Kg">2 Kg</option>
+              <option value="3Kg">3 Kg</option>
+              <option value="Other">Other / Custom Weight (Specify Below)</option>
+            </select>
+          </div>
         </div>
 
         <div class="form-group" id="customSizeGroup" style="display: none;">
@@ -438,9 +691,25 @@
           <input type="text" id="customSizeInput" name="Custom Size Requirements" class="form-control" placeholder="e.g. 1.5 Kg, 5 Kg or 3-Tier Cake">
         </div>
 
+        <!-- Custom Glassy Date Picker Component -->
         <div class="form-group">
           <label>Delivery / Pickup Date</label>
-          <input type="date" id="delDate" name="Delivery Date" class="form-control" required>
+          <div class="custom-date-wrapper" id="customDateWrapper">
+            <div class="custom-date-display" id="customDateDisplay">Select delivery date</div>
+            <input type="text" id="delDate" name="Delivery Date" style="display:none;" required>
+            
+            <div class="calendar-popup" id="calendarPopup">
+              <div class="cal-header">
+                <button type="button" class="cal-nav-btn" id="calPrevMonth">&#10094;</button>
+                <span id="calMonthYearTitle">September 2026</span>
+                <button type="button" class="cal-nav-btn" id="calNextMonth">&#10095;</button>
+              </div>
+              <div class="cal-weekdays">
+                <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+              </div>
+              <div class="cal-grid" id="calDaysGrid"></div>
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
@@ -505,7 +774,6 @@
   <footer>&copy; 2026 &bull; Sandu Cake &bull; Sweet Moments Delivered.</footer>
 
   <script>
-    /* ---------- Cinematic parallax on scroll ---------- */
     const heroContent = document.getElementById('heroContent');
     const heroCakeStage = document.getElementById('heroCakeStage');
     const parallaxLayer = document.getElementById('parallaxLayer');
@@ -532,7 +800,6 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    /* ---------- 3D reveal on scroll for cards/sections ---------- */
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
@@ -546,7 +813,6 @@
     function observeReveal(el) { revealObserver.observe(el); }
     document.querySelectorAll('.social-card, #formCard').forEach(observeReveal);
 
-    /* ---------- Pointer tilt for cake cards (desktop only) ---------- */
     function attachTilt(card) {
       if (window.matchMedia('(hover: none)').matches || reduceMotion) return;
       card.addEventListener('mousemove', (e) => {
@@ -560,7 +826,162 @@
       });
     }
 
-    /* ---------- Cake data ---------- */
+    // Custom Glass Dropdown Logic Handler
+    function initCustomSelect(selectId) {
+      const selectElement = document.getElementById(selectId);
+      const displayElement = document.getElementById('display-' + selectId);
+      const optionsContainer = document.getElementById('options-' + selectId);
+
+      displayElement.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeAllPopups(optionsContainer);
+        displayElement.classList.toggle('open');
+        optionsContainer.classList.toggle('open');
+      });
+    }
+
+    function populateCustomOptions(selectId) {
+      const selectElement = document.getElementById(selectId);
+      const optionsContainer = document.getElementById('options-' + selectId);
+      const displayElement = document.getElementById('display-' + selectId);
+
+      optionsContainer.innerHTML = '';
+      Array.from(selectElement.options).forEach(option => {
+        const optDiv = document.createElement('div');
+        optDiv.className = 'custom-option' + (option.selected ? ' selected' : '');
+        optDiv.textContent = option.text;
+        optDiv.dataset.value = option.value;
+
+        optDiv.addEventListener('click', () => {
+          selectElement.value = option.value;
+          displayElement.textContent = option.text;
+          selectElement.dispatchEvent(new Event('change'));
+
+          optionsContainer.querySelectorAll('.custom-option').forEach(o => o.classList.remove('selected'));
+          optDiv.classList.add('selected');
+
+          displayElement.classList.remove('open');
+          optionsContainer.classList.remove('open');
+        });
+
+        optionsContainer.appendChild(optDiv);
+      });
+    }
+
+    // Custom Glassy Calendar Component Logic
+    let currentCalDate = new Date();
+    let selectedDateVal = null;
+
+    function initCustomCalendar() {
+      const display = document.getElementById('customDateDisplay');
+      const popup = document.getElementById('calendarPopup');
+      const hiddenInput = document.getElementById('delDate');
+
+      display.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeAllPopups(popup);
+        display.classList.toggle('open');
+        popup.classList.toggle('open');
+        renderCalendar();
+      });
+
+      document.getElementById('calPrevMonth').addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentCalDate.setMonth(currentCalDate.getMonth() - 1);
+        renderCalendar();
+      });
+
+      document.getElementById('calNextMonth').addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentCalDate.setMonth(currentCalDate.getMonth() + 1);
+        renderCalendar();
+      });
+    }
+
+    function renderCalendar() {
+      const year = currentCalDate.getFullYear();
+      const month = currentCalDate.getMonth();
+      
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      document.getElementById('calMonthYearTitle').textContent = `${monthNames[month]} ${year}`;
+
+      const grid = document.getElementById('calDaysGrid');
+      grid.innerHTML = '';
+
+      const firstDayIndex = new Date(year, month, 1).getDay();
+      const totalDays = new Date(year, month + 1, 0).getDate();
+      const prevTotalDays = new Date(year, month, 0).getDate();
+
+      const today = new Date();
+
+      // Previous month padding days
+      for (let i = firstDayIndex - 1; i >= 0; i--) {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'cal-day muted';
+        dayDiv.textContent = prevTotalDays - i;
+        grid.appendChild(dayDiv);
+      }
+
+      // Current month days
+      for (let d = 1; d <= totalDays; d++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'cal-day';
+        dayDiv.textContent = d;
+
+        const isToday = d === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+        if (isToday) dayDiv.classList.add('today');
+
+        const formattedDateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        if (selectedDateVal === formattedDateString) {
+          dayDiv.classList.add('selected');
+        }
+
+        dayDiv.addEventListener('click', (e) => {
+          e.stopPropagation();
+          selectedDateVal = formattedDateString;
+          document.getElementById('delDate').value = selectedDateVal;
+          
+          // Format nice display string
+          const displayDateFormatted = new Date(year, month, d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          document.getElementById('customDateDisplay').textContent = displayDateFormatted;
+
+          document.getElementById('customDateDisplay').classList.remove('open');
+          document.getElementById('calendarPopup').classList.remove('open');
+        });
+
+        grid.appendChild(dayDiv);
+      }
+
+      // Next month padding days to fill grid rows
+      const totalCells = grid.children.length;
+      const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+      for (let i = 1; i <= remainingCells; i++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'cal-day muted';
+        dayDiv.textContent = i;
+        grid.appendChild(dayDiv);
+      }
+    }
+
+    function closeAllPopups(exceptEl) {
+      document.querySelectorAll('.custom-options').forEach(el => { if(el !== exceptEl) el.classList.remove('open'); });
+      document.querySelectorAll('.custom-select').forEach(el => el.classList.remove('open'));
+      const calPopup = document.getElementById('calendarPopup');
+      if (calPopup !== exceptEl) {
+        calPopup.classList.remove('open');
+        document.getElementById('customDateDisplay').classList.remove('open');
+      }
+    }
+
+    // Initialize custom dropdowns & calendar
+    initCustomSelect('cakeSelect');
+    initCustomSelect('cakeSizeSelect');
+    initCustomCalendar();
+
+    window.addEventListener('click', () => {
+      closeAllPopups(null);
+    });
+
     async function fetchCakes() {
       const container = document.getElementById('cake-container');
       const cakeSelect = document.getElementById('cakeSelect');
@@ -609,8 +1030,11 @@
           cakeSelect.innerHTML += `<option value="${cake.title} - Rs. ${cake.price}">${cake.title} - Rs. ${cake.price}</option>`;
         });
 
+        populateCustomOptions('cakeSelect');
+
       } catch (err) {
         container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: var(--cream-dim);">Add cakes via Admin Panel (/admin) to view them here.</p>';
+        populateCustomOptions('cakeSelect');
       }
     }
 
@@ -619,9 +1043,11 @@
       for (let i = 0; i < select.options.length; i++) {
         if (select.options[i].text.includes(cakeTitle)) {
           select.selectedIndex = i;
+          document.getElementById('display-cakeSelect').textContent = select.options[i].text;
           break;
         }
       }
+      populateCustomOptions('cakeSelect');
     }
 
     function toggleCustomSizeInput() {
@@ -631,6 +1057,7 @@
     }
 
     fetchCakes();
+    populateCustomOptions('cakeSizeSelect');
 
     function togglePayment(type) {
       document.querySelectorAll('.payment-option-card').forEach(c => c.classList.remove('active'));
@@ -654,6 +1081,12 @@
     function closeModal() {
       document.getElementById('successModal').classList.remove('active');
       document.getElementById('cakeOrderForm').reset();
+      document.getElementById('display-cakeSelect').textContent = 'Select a cake from menu';
+      document.getElementById('display-cakeSizeSelect').textContent = '1 Kg';
+      document.getElementById('customDateDisplay').textContent = 'Select delivery date';
+      selectedDateVal = null;
+      populateCustomOptions('cakeSelect');
+      populateCustomOptions('cakeSizeSelect');
       togglePayment('cod');
       toggleCustomSizeInput();
     }
